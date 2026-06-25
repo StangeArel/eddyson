@@ -3,30 +3,68 @@
 }
 
 .hero-metric-card {
-  min-height: 8rem;
-  padding: 1rem;
+  height: 178px;
+  box-sizing: border-box;
+  padding: 16px;
   display: grid;
-  align-content: center;
-  gap: 0.75rem;
-  border-radius: 0.5rem;
-  background: rgb(23 23 23 / 0.92);
-  box-shadow: 0 1rem 2rem rgb(23 23 23 / 0.18);
+  gap: 16px;
+  border-radius: 12px;
+  background: rgb(22 22 22 / 0.9);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.16);
+  color: #f8f8f8;
+  font-family: Roboto, 'DM Sans', Arial, sans-serif;
 }
 
-.hero-metric-card span {
-  height: 0.5rem;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.7);
+.hero-metric-card__date {
+  color: #949494;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
-.hero-metric-card span:nth-child(1) {
-  width: 72%;
+.hero-metric-card__summary,
+.hero-metric-card__list div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 16px;
 }
 
-.hero-metric-card span:nth-child(2) {
-  width: 96%;
+.hero-metric-card__summary span {
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
 }
 
-.hero-metric-card span:nth-child(3) {
-  width: 58%;
+.hero-metric-card__summary strong {
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.hero-metric-card__list {
+  margin: 0;
+  display: grid;
+  gap: 13px;
+}
+
+.hero-metric-card__list dt,
+.hero-metric-card__list dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.hero-metric-card__list dt {
+  color: #a6a6a6;
+  font-weight: 400;
+}
+
+.hero-metric-card__list dd {
+  color: #f8f8f8;
+  font-weight: 500;
+  text-align: right;
 }

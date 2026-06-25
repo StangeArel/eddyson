@@ -9,6 +9,7 @@
 .hero-section__frame {
   width: min(100%, 1495px);
   height: 795px;
+  box-sizing: border-box;
   margin-inline: auto;
   position: relative;
 }
@@ -29,11 +30,46 @@
 .hero-section__teaser {
   width: min(calc(100% - 48px), 1447px);
   height: 520px;
+  box-sizing: border-box;
   position: absolute;
   left: 24px;
   top: 275px;
   border-radius: 24px 24px 0 0;
   background: #ff8831;
+}
+
+.hero-section__visuals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-section__request-panel,
+.hero-section__metric-card,
+.hero-section__media-card {
+  position: absolute;
+  display: block;
+}
+
+.hero-section__request-panel {
+  width: 313px;
+  top: -122px;
+  left: 1094px;
+  z-index: 1;
+}
+
+.hero-section__metric-card {
+  width: 240px;
+  top: -39px;
+  left: 896px;
+  z-index: 3;
+}
+
+.hero-section__media-card {
+  width: 412px;
+  top: 175px;
+  left: 766px;
+  z-index: 2;
 }
 
 .hero-section__teaser-content {
@@ -78,6 +114,7 @@
 
 .hero-section__button {
   height: 57px;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -128,12 +165,40 @@
   .hero-section__teaser {
     width: 100%;
     height: auto;
-    min-height: 520px;
     padding: 72px clamp(24px, 8vw, 102px);
+    display: grid;
+    gap: 48px;
   }
 
   .hero-section__teaser-content {
     width: min(100%, 484px);
+  }
+
+  .hero-section__visuals {
+    width: min(100%, 460px);
+    min-height: 500px;
+    position: relative;
+    justify-self: end;
+  }
+
+  .hero-section__request-panel {
+    width: min(72%, 313px);
+    top: 0;
+    right: 0;
+    left: auto;
+  }
+
+  .hero-section__metric-card {
+    width: min(58%, 240px);
+    top: 156px;
+    left: 0;
+  }
+
+  .hero-section__media-card {
+    width: min(92%, 412px);
+    top: 254px;
+    right: 0;
+    left: auto;
   }
 }
 
@@ -151,6 +216,7 @@
     min-height: 0;
     padding: 48px 24px;
     border-radius: 16px 16px 0 0;
+    gap: 32px;
   }
 
   .hero-section__copy h2 {
@@ -170,5 +236,24 @@
 
   .hero-section__button {
     width: 100%;
+  }
+
+  .hero-section__visuals {
+    min-height: 420px;
+    justify-self: stretch;
+  }
+
+  .hero-section__request-panel {
+    width: 72%;
+  }
+
+  .hero-section__metric-card {
+    width: min(78%, 250px);
+    top: 142px;
+  }
+
+  .hero-section__media-card {
+    width: 95%;
+    top: 236px;
   }
 }
