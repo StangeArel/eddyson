@@ -3,29 +3,80 @@
 }
 
 .customer-logo-strip {
-  border-block: 1px solid var(--line-color);
-  background: #efeeec;
+  width: min(calc(100% - 48px), 1447px);
+  height: 167px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+  background: #ececec;
+}
+
+.customer-logo-strip__viewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  contain: layout paint;
 }
 
 .customer-logo-strip__track {
-  width: min(100%, var(--container-width));
-  min-height: 5rem;
-  margin-inline: auto;
-  padding: 1rem var(--container-padding);
-  display: grid;
-  grid-template-columns: repeat(7, minmax(4rem, 1fr));
+  position: absolute;
+  top: 50%;
+  left: -84px;
+  display: flex;
   align-items: center;
-  gap: clamp(1rem, 3vw, 2rem);
+  transform: translateY(-50%);
+  animation: logo-belt 30s linear infinite;
+  will-change: transform;
 }
 
-.customer-logo-strip__track span {
-  height: 1rem;
-  border-radius: 999px;
-  background: #a7a5a1;
+.customer-logo-strip__group {
+  padding-right: 50px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex: 0 0 auto;
+}
+
+.customer-logo-strip__group img {
+  display: block;
+  flex: 0 0 auto;
+}
+
+@keyframes logo-belt {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-logo-strip__track {
+    animation-duration: 90s;
+  }
 }
 
 @media (max-width: 42rem) {
+  .customer-logo-strip {
+    width: calc(100% - 24px);
+    height: 118px;
+    border-radius: 0 0 16px 16px;
+  }
+
   .customer-logo-strip__track {
-    grid-template-columns: repeat(3, 1fr);
+    left: -59px;
+  }
+
+  .customer-logo-strip__group {
+    padding-right: 35px;
+    gap: 35px;
+  }
+
+  .customer-logo-strip__group img {
+    transform: scale(0.7);
+    transform-origin: center;
   }
 }
