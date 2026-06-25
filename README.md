@@ -7,6 +7,9 @@ Angular implementation of the eddyson partner landing page assessment.
 - Angular standalone application with SCSS and routing enabled
 - Root app shell kept minimal and route-driven
 - Partner landing page isolated in `src/app/features/partner-landing`
+- Page-level layout components live in `src/app/layout`
+- Landing page sections live in `src/app/features/partner-landing/sections`
+- Reusable landing page UI shells live in `src/app/features/partner-landing/ui`
 - Global base styles prepared in `src/styles.scss`
 
 ## Development Server
