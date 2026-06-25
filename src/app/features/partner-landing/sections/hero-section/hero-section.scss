@@ -1,3 +1,71 @@
 :host {
   display: block;
 }
+
+.hero-section {
+  width: min(100%, var(--container-width));
+  min-height: clamp(30rem, 74vh, 43rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 7vw, 5rem) var(--container-padding) clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 8vw, 6rem);
+}
+
+.hero-section__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero-section__headline {
+  display: block;
+  height: clamp(3.25rem, 8vw, 6rem);
+  border-radius: 0.5rem;
+  background: #282828;
+}
+
+.hero-section__headline--long {
+  width: min(100%, 28rem);
+}
+
+.hero-section__headline--short {
+  width: min(72%, 20rem);
+}
+
+.hero-section__visuals {
+  min-height: clamp(22rem, 46vw, 34rem);
+  position: relative;
+}
+
+app-hero-metric-card {
+  position: absolute;
+  left: 0;
+  bottom: 16%;
+  width: min(38%, 13rem);
+}
+
+app-hero-request-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: min(58%, 22rem);
+}
+
+app-hero-media-card {
+  position: absolute;
+  left: 18%;
+  bottom: 0;
+  width: min(58%, 22rem);
+}
+
+@media (max-width: 54rem) {
+  .hero-section {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section__visuals {
+    min-height: 24rem;
+  }
+}

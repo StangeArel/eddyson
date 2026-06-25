@@ -5,8 +5,18 @@
 }
 
 :root {
+  --page-background: #f6f6f4;
+  --panel-background: #ffffff;
+  --surface-muted: #ecebea;
+  --surface-strong: #171717;
+  --surface-warm: #ff7f2a;
+  --line-color: #dedddb;
+  --text-color: #171717;
+  --container-width: 78rem;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
   color: #171717;
-  background: #f6f6f4;
+  background: var(--page-background);
   font-family:
     Inter,
     ui-sans-serif,
@@ -29,6 +39,7 @@ html {
 body {
   min-height: 100%;
   margin: 0;
+  background: var(--page-background);
 }
 
 button,

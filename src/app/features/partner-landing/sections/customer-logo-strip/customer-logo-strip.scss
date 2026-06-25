@@ -1,3 +1,31 @@
 :host {
   display: block;
 }
+
+.customer-logo-strip {
+  border-block: 1px solid var(--line-color);
+  background: #efeeec;
+}
+
+.customer-logo-strip__track {
+  width: min(100%, var(--container-width));
+  min-height: 5rem;
+  margin-inline: auto;
+  padding: 1rem var(--container-padding);
+  display: grid;
+  grid-template-columns: repeat(7, minmax(4rem, 1fr));
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.customer-logo-strip__track span {
+  height: 1rem;
+  border-radius: 999px;
+  background: #a7a5a1;
+}
+
+@media (max-width: 42rem) {
+  .customer-logo-strip__track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

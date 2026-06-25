@@ -1,3 +1,27 @@
 :host {
   display: block;
 }
+
+.benefits-section {
+  width: min(100%, var(--container-width));
+  margin-inline: auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--container-padding);
+}
+
+.benefits-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+@media (max-width: 58rem) {
+  .benefits-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 34rem) {
+  .benefits-section__grid {
+    grid-template-columns: 1fr;
+  }
+}

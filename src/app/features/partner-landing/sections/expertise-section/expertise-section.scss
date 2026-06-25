@@ -1,3 +1,32 @@
 :host {
   display: block;
 }
+
+.expertise-section {
+  width: min(100%, var(--container-width));
+  margin-inline: auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--container-padding);
+}
+
+.expertise-section__copy {
+  width: min(100%, 46rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 0.875rem;
+}
+
+.expertise-section__copy span {
+  height: 0.875rem;
+  border-radius: 999px;
+  background: #b8b6b2;
+}
+
+.expertise-section__copy span:nth-child(1) {
+  width: min(26rem, 88%);
+  height: 1.25rem;
+  background: #2a2a2a;
+}
+
+.expertise-section__copy span:nth-child(4) {
+  width: 72%;
+}

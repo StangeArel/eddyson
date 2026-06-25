@@ -1,3 +1,41 @@
 :host {
   display: block;
 }
+
+.process-step-card {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #282828;
+}
+
+.process-step-card__image {
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(circle at 50% 42%, var(--surface-warm) 0 24%, transparent 25%),
+    linear-gradient(135deg, #4f8c75, #e7d4c9);
+}
+
+.process-step-card__body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.625rem;
+}
+
+.process-step-card__body span {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.62);
+}
+
+.process-step-card__body span:first-child {
+  width: 42%;
+  background: rgb(255 255 255 / 0.9);
+}
+
+.process-step-card__body span:nth-child(2) {
+  width: 90%;
+}
+
+.process-step-card__body span:nth-child(3) {
+  width: 72%;
+}

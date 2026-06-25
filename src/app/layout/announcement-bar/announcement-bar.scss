@@ -1,3 +1,27 @@
 :host {
   display: block;
 }
+
+.announcement-bar {
+  background: var(--surface-strong);
+}
+
+.announcement-bar__inner {
+  width: min(100%, var(--container-width));
+  height: 2rem;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: grid;
+  place-items: center;
+}
+
+.announcement-bar__line {
+  display: block;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.72);
+}
+
+.announcement-bar__line--short {
+  width: min(14rem, 42vw);
+}
