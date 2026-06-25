@@ -3,69 +3,172 @@
 }
 
 .hero-section {
-  width: min(100%, var(--container-width));
-  min-height: clamp(30rem, 74vh, 43rem);
+  background: var(--page-background);
+}
+
+.hero-section__frame {
+  width: min(100%, 1495px);
+  height: 795px;
   margin-inline: auto;
-  padding: clamp(2rem, 7vw, 5rem) var(--container-padding) clamp(1.5rem, 4vw, 3rem);
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1fr);
-  align-items: center;
-  gap: clamp(2rem, 8vw, 6rem);
-}
-
-.hero-section__content {
-  display: grid;
-  gap: 1rem;
-}
-
-.hero-section__headline {
-  display: block;
-  height: clamp(3.25rem, 8vw, 6rem);
-  border-radius: 0.5rem;
-  background: #282828;
-}
-
-.hero-section__headline--long {
-  width: min(100%, 28rem);
-}
-
-.hero-section__headline--short {
-  width: min(72%, 20rem);
-}
-
-.hero-section__visuals {
-  min-height: clamp(22rem, 46vw, 34rem);
   position: relative;
 }
 
-app-hero-metric-card {
+.hero-section__title {
+  width: 566px;
   position: absolute;
-  left: 0;
-  bottom: 16%;
-  width: min(38%, 13rem);
+  left: 126px;
+  top: 15px;
+  margin: 0;
+  color: #212121;
+  font-family: Quando, Georgia, serif;
+  font-size: 62px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-app-hero-request-panel {
+.hero-section__teaser {
+  width: min(calc(100% - 48px), 1447px);
+  height: 520px;
   position: absolute;
-  right: 0;
-  top: 0;
-  width: min(58%, 22rem);
+  left: 24px;
+  top: 275px;
+  border-radius: 24px 24px 0 0;
+  background: #ff8831;
 }
 
-app-hero-media-card {
+.hero-section__teaser-content {
+  width: 484px;
   position: absolute;
-  left: 18%;
-  bottom: 0;
-  width: min(58%, 22rem);
+  left: 102px;
+  top: 109px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
 
-@media (max-width: 54rem) {
-  .hero-section {
-    min-height: auto;
-    grid-template-columns: 1fr;
+.hero-section__copy {
+  display: grid;
+  gap: 16px;
+}
+
+.hero-section__copy h2 {
+  margin: 0;
+  color: #161616;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 47px;
+}
+
+.hero-section__copy p {
+  margin: 0;
+  color: #212121;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.hero-section__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-section__button {
+  height: 57px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  border-radius: 8px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 21px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.hero-section__button--secondary {
+  width: 174px;
+  border: 2px solid #161616;
+  background: transparent;
+  color: #212121;
+}
+
+.hero-section__button--primary {
+  width: 189px;
+  border: 0;
+  background: #161616;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 0.25);
+  color: #f8f8f8;
+}
+
+@media (max-width: 72rem) {
+  .hero-section__frame {
+    height: auto;
+    padding: 24px 24px 0;
   }
 
-  .hero-section__visuals {
-    min-height: 24rem;
+  .hero-section__title,
+  .hero-section__teaser,
+  .hero-section__teaser-content {
+    position: static;
+  }
+
+  .hero-section__title {
+    width: min(100%, 566px);
+    margin-bottom: 48px;
+    font-size: clamp(42px, 8vw, 62px);
+  }
+
+  .hero-section__teaser {
+    width: 100%;
+    height: auto;
+    min-height: 520px;
+    padding: 72px clamp(24px, 8vw, 102px);
+  }
+
+  .hero-section__teaser-content {
+    width: min(100%, 484px);
+  }
+}
+
+@media (max-width: 40rem) {
+  .hero-section__frame {
+    padding-inline: 12px;
+  }
+
+  .hero-section__title {
+    font-size: 38px;
+    line-height: 1.35;
+  }
+
+  .hero-section__teaser {
+    min-height: 0;
+    padding: 48px 24px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .hero-section__copy h2 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .hero-section__copy p {
+    font-size: 16px;
+  }
+
+  .hero-section__actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hero-section__button {
+    width: 100%;
   }
 }
