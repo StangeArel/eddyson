@@ -1,0 +1,31 @@
+.landing-page {
+  min-height: 100vh;
+  background: #f6f6f4;
+}
+
+.landing-page__placeholder {
+  width: min(100% - 2rem, 72rem);
+  min-height: 100vh;
+  margin-inline: auto;
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+}
+
+.landing-page__eyebrow {
+  margin: 0;
+  color: #ff7f2a;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: #242424;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(3rem, 12vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
