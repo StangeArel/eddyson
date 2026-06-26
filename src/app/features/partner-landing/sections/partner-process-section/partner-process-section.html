@@ -1,12 +1,22 @@
-<section class="partner-process-section" aria-label="Partner process">
-  <div class="partner-process-section__intro" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div class="partner-process-section__steps">
-    <app-process-step-card />
-    <app-process-step-card />
-    <app-process-step-card />
+<section class="partner-process-section" aria-labelledby="partner-process-title">
+  <div class="partner-process-section__frame">
+    <header class="partner-process-section__intro">
+      <p class="partner-process-section__eyebrow">Partner program</p>
+      <h2 id="partner-process-title">Efficient processes right from the start</h2>
+      <p>
+        Choosing eddyson means choosing a partnership built on trust, quality, and strategic
+        foresight. Our 3-phase program lays the foundation for long-term success.
+      </p>
+    </header>
+
+    <div class="partner-process-section__steps" aria-label="Partner program phases">
+      @for (step of steps; track step.title) {
+        <app-process-step-card
+          [imageSrc]="step.imageSrc"
+          [title]="step.title"
+          [description]="step.description"
+        />
+      }
+    </div>
   </div>
 </section>
