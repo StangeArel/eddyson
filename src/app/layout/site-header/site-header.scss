@@ -4,6 +4,8 @@
 
 .site-header {
   height: 119px;
+  position: relative;
+  z-index: 2;
   background: var(--page-background);
 }
 
@@ -34,15 +36,13 @@
   width: 104px;
   height: 16px;
   position: absolute;
-  left: 1455px;
-  top: 26px;
-  color: #949494;
+  top: 27px;
+  left: calc(100% - 40px);
+  color: #858585;
   font-family: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
   font-size: 12px;
-  font-weight: 300;
   letter-spacing: 0.02em;
   line-height: 16px;
-  text-align: center;
   text-transform: uppercase;
   transform: rotate(90deg);
   transform-origin: top left;
