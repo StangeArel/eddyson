@@ -192,6 +192,8 @@
     width: 100%;
     height: auto;
     padding: 72px clamp(24px, 8vw, 102px);
+    position: relative;
+    z-index: 1;
     display: grid;
     gap: 48px;
   }
