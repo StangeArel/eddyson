@@ -25,6 +25,8 @@
   z-index: 0;
   content: '';
   background: url('/assets/hero/dot-grid-background.svg') center / 100% 100% no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 52%, #000 78%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 52%, #000 78%);
   pointer-events: none;
   transform: translateX(-50%);
 }
