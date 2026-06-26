@@ -1,0 +1,9 @@
+<svg width="1495" height="807" viewBox="0 0 1495 807" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1495" height="807" fill="#F8F8F8" />
+  <defs>
+    <pattern id="dot-grid" width="41" height="41" patternUnits="userSpaceOnUse">
+      <rect width="5" height="5" fill="#EFEFEF" opacity="0.8" />
+    </pattern>
+  </defs>
+  <rect width="1495" height="807" fill="url(#dot-grid)" />
+</svg>
