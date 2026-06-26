@@ -3,68 +3,12 @@
 }
 
 .hero-metric-card {
-  height: 178px;
-  box-sizing: border-box;
-  padding: 16px;
-  display: grid;
-  gap: 16px;
-  border-radius: 12px;
-  background: rgb(22 22 22 / 0.9);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.16);
-  color: #f8f8f8;
-  font-family: Roboto, 'DM Sans', Arial, sans-serif;
-}
-
-.hero-metric-card__date {
-  color: #949494;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  display: block;
   line-height: 1;
 }
 
-.hero-metric-card__summary,
-.hero-metric-card__list div {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.hero-metric-card__summary span {
-  color: #fafafa;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.hero-metric-card__summary strong {
-  color: #fafafa;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.hero-metric-card__list {
-  margin: 0;
-  display: grid;
-  gap: 13px;
-}
-
-.hero-metric-card__list dt,
-.hero-metric-card__list dd {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1;
-}
-
-.hero-metric-card__list dt {
-  color: #a6a6a6;
-  font-weight: 400;
-}
-
-.hero-metric-card__list dd {
-  color: #f8f8f8;
-  font-weight: 500;
-  text-align: right;
+.hero-metric-card img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
