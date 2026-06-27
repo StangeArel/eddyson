@@ -17,27 +17,27 @@
   gap: 1rem;
 }
 
-.contact-section__content span {
+.contact-section__placeholder {
   height: 0.875rem;
   border-radius: 999px;
   background: #b8b6b2;
 }
 
-.contact-section__content span:nth-child(1) {
+.contact-section__placeholder--title {
   width: min(25rem, 92%);
   height: 1.5rem;
   background: #2a2a2a;
 }
 
-.contact-section__content span:nth-child(2) {
+.contact-section__placeholder--wide {
   width: min(34rem, 100%);
 }
 
-.contact-section__content span:nth-child(3) {
+.contact-section__placeholder--medium {
   width: min(31rem, 88%);
 }
 
-.contact-section__content span:nth-child(4) {
+.contact-section__placeholder--short {
   width: min(24rem, 76%);
 }
 

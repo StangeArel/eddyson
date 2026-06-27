@@ -12,14 +12,15 @@
   box-shadow: 0 1rem 2.5rem rgb(23 23 23 / 0.1);
 }
 
-.partner-contact-form span {
+.partner-contact-form__field,
+.partner-contact-form__submit {
   height: 2.5rem;
   border: 1px solid var(--line-color);
   border-radius: 0.375rem;
   background: #fbfaf9;
 }
 
-.partner-contact-form span:last-child {
+.partner-contact-form__submit {
   border-color: var(--surface-strong);
   background: var(--surface-strong);
 }
