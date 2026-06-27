@@ -66,11 +66,10 @@
 }
 
 .partner-process-section__ribbons {
-  width: calc(100% + 104.5px);
+  width: 100%;
   height: 408px;
   position: absolute;
-  top: 365px;
-  left: -20px;
+  top: 312px;
   z-index: 0;
   background: url('/assets/partner-program/ribbon-frame.svg') center / 100% 100% no-repeat;
   pointer-events: none;
@@ -109,10 +108,9 @@
   }
 
   .partner-process-section__ribbons {
-    width: calc(100% + 620px);
     height: 760px;
-    top: 320px;
-    left: -310px;
+    top: 187px;
+    background-size: calc(100% + 620px) 100%;
   }
 }
 
@@ -141,9 +139,8 @@
   }
 
   .partner-process-section__ribbons {
-    width: 606px;
     height: 1320px;
-    top: 192px;
-    left: -132px;
+    top: 134px;
+    background-size: 606px 100%;
   }
 }
