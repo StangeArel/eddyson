@@ -1,3 +1,5 @@
+@use './styles/colors';
+
 *,
 *::before,
 *::after {
@@ -5,18 +7,11 @@
 }
 
 :root {
-  --page-background: #f8f8f8;
-  --panel-background: #ffffff;
-  --surface-muted: #ecebea;
-  --surface-strong: #171717;
-  --surface-warm: #ff7f2a;
-  --line-color: #dedddb;
-  --text-color: #171717;
   --container-width: 78rem;
   --container-padding: clamp(1rem, 4vw, 2rem);
 
-  color: #171717;
-  background: var(--page-background);
+  color: var(--color-ink);
+  background: var(--color-page);
   font-family:
     Inter,
     ui-sans-serif,
@@ -39,7 +34,7 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  background: var(--page-background);
+  background: var(--color-page);
 }
 
 button,

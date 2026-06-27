@@ -1,0 +1,54 @@
+:root {
+  --color-none: transparent;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --color-page: #f8f8f8;
+  --color-off-white: #fafafa;
+  --color-warm-white: #fffaf5;
+
+  --color-text-dark: #070707;
+  --color-ink: #161616;
+  --color-almost-black: #1c1c1e;
+  --color-charcoal: #212121;
+  --color-brown-black: #232021ff;
+  --color-process: #282828;
+  --color-gray-900: #333333;
+  --color-gray-700: #474747;
+  --color-gray-600: #6f6f6f;
+  --color-logo-gray: #8d8d8d;
+  --color-gray-400: #949494;
+  --color-gray-300: #a3a3a3;
+  --color-gray-200: #c6c6c6;
+  --color-gray-100: #ededed;
+  --color-logo-strip: #ececec;
+
+  --color-blue: #065dfe;
+  --color-orange: #ff8831;
+  --color-orange-dark: #e46a1c;
+  --color-red: #ff4c4c;
+  --color-red-dark: #c43a36;
+  --color-mint: #50e3c2;
+  --color-violet: #bd10e0;
+
+  --shadow-10: rgba(0, 0, 0, 0.1);
+  --shadow-16: rgba(0, 0, 0, 0.16);
+  --shadow-20: rgba(0, 0, 0, 0.2);
+  --shadow-25: rgba(0, 0, 0, 0.25);
+  --shadow-29: rgba(0, 0, 0, 0.29);
+  --overlay-black-63: rgba(0, 0, 0, 0.63);
+  --overlay-black-80: rgba(0, 0, 0, 0.8);
+  --overlay-purple-30: rgba(11, 6, 27, 0.3);
+  --overlay-muted-purple-20: rgba(107, 96, 117, 0.2);
+  --overlay-gray-20: rgba(148, 148, 148, 0.2);
+  --overlay-ink-16: rgba(22, 22, 22, 0.16);
+  --overlay-ink-90: rgba(22, 22, 22, 0.9);
+  --overlay-yellow-05: rgba(250, 228, 118, 0.05);
+  --overlay-pink-10: rgba(252, 229, 252, 0.1);
+  --overlay-white-50: rgba(255, 255, 255, 0.5);
+
+  --page-background: var(--color-page);
+  --panel-background: var(--color-white);
+  --line-color: #dedddb;
+  --surface-strong: var(--color-ink);
+}
