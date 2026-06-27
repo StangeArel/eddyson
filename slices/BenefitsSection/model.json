@@ -1,0 +1,58 @@
+{
+  "id": "benefits_section",
+  "type": "SharedSlice",
+  "name": "BenefitsSection",
+  "description": "Grid of partner benefit cards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Repeatable benefit cards with image, title, and text",
+      "primary": {
+        "aria_label": {
+          "type": "Text",
+          "config": {
+            "label": "Accessible section label"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Card image"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Card title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Card description",
+            "multi": "paragraph"
+          }
+        },
+        "style_key": {
+          "type": "Select",
+          "config": {
+            "label": "Style key",
+            "options": [
+              "grow",
+              "earn",
+              "technology",
+              "diverse",
+              "competitive",
+              "collaboration"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "hero_section",
+  "type": "SharedSlice",
+  "name": "HeroSection",
+  "description": "Partner landing page hero section",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Hero with title, teaser copy, actions, and UI mockup images",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "multi": "heading1"
+          }
+        },
+        "teaser_label": {
+          "type": "Text",
+          "config": {
+            "label": "Teaser side label"
+          }
+        },
+        "teaser_title": {
+          "type": "Text",
+          "config": {
+            "label": "Teaser title"
+          }
+        },
+        "teaser_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Teaser text",
+            "multi": "paragraph"
+          }
+        },
+        "secondary_button_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary button label"
+          }
+        },
+        "secondary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary button link"
+          }
+        },
+        "primary_button_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary button label"
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary button link"
+          }
+        },
+        "dot_background": {
+          "type": "Image",
+          "config": {
+            "label": "Dot background"
+          }
+        },
+        "gradient_overlay": {
+          "type": "Image",
+          "config": {
+            "label": "Gradient overlay"
+          }
+        },
+        "request_panel_image": {
+          "type": "Image",
+          "config": {
+            "label": "Request panel image"
+          }
+        },
+        "metric_card_image": {
+          "type": "Image",
+          "config": {
+            "label": "Metric card image"
+          }
+        },
+        "media_card_image": {
+          "type": "Image",
+          "config": {
+            "label": "Media card image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "expertise_section",
+  "type": "SharedSlice",
+  "name": "ExpertiseSection",
+  "description": "Centered EDI expertise text section",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Heading and supporting text",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "multi": "heading2"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

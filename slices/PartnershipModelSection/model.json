@@ -1,0 +1,36 @@
+{
+  "id": "partnership_model_section",
+  "type": "SharedSlice",
+  "name": "PartnershipModelSection",
+  "description": "Partnership model question with inline call-to-action",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Question text and linked CTA label",
+      "primary": {
+        "question": {
+          "type": "Text",
+          "config": {
+            "label": "Question"
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

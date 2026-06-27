@@ -1,0 +1,84 @@
+{
+  "id": "partner_landing_page",
+  "label": "Partner Landing Page",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "body": {
+        "type": "Slices",
+        "fieldset": "Slice zone",
+        "config": {
+          "labels": {
+            "hero_section": [
+              {
+                "name": "title",
+                "display": "Title"
+              }
+            ],
+            "customer_logo_strip": [
+              {
+                "name": "aria_label",
+                "display": "Accessible section label"
+              }
+            ],
+            "partner_process_section": [
+              {
+                "name": "title",
+                "display": "Title"
+              }
+            ],
+            "expertise_section": [
+              {
+                "name": "title",
+                "display": "Title"
+              }
+            ],
+            "partnership_model_section": [
+              {
+                "name": "question",
+                "display": "Question"
+              }
+            ],
+            "benefits_section": [
+              {
+                "name": "aria_label",
+                "display": "Accessible section label"
+              }
+            ],
+            "contact_section": [
+              {
+                "name": "title",
+                "display": "Title"
+              }
+            ]
+          },
+          "choices": {
+            "hero_section": {
+              "type": "SharedSlice"
+            },
+            "customer_logo_strip": {
+              "type": "SharedSlice"
+            },
+            "partner_process_section": {
+              "type": "SharedSlice"
+            },
+            "expertise_section": {
+              "type": "SharedSlice"
+            },
+            "partnership_model_section": {
+              "type": "SharedSlice"
+            },
+            "benefits_section": {
+              "type": "SharedSlice"
+            },
+            "contact_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "custom"
+}

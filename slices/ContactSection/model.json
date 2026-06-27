@@ -1,0 +1,88 @@
+{
+  "id": "contact_section",
+  "type": "SharedSlice",
+  "name": "ContactSection",
+  "description": "Partner contact section with form fields",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Contact copy, background artwork, and form field definitions",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "multi": "heading2"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "multi": "paragraph"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background image"
+          }
+        },
+        "submit_label": {
+          "type": "Text",
+          "config": {
+            "label": "Submit label"
+          }
+        },
+        "privacy_text": {
+          "type": "Text",
+          "config": {
+            "label": "Privacy consent text"
+          }
+        },
+        "privacy_link": {
+          "type": "Link",
+          "config": {
+            "label": "Privacy link"
+          }
+        }
+      },
+      "items": {
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Field label"
+          }
+        },
+        "placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder"
+          }
+        },
+        "field_type": {
+          "type": "Select",
+          "config": {
+            "label": "Field type",
+            "options": [
+              "text",
+              "email",
+              "tel",
+              "select",
+              "textarea"
+            ]
+          }
+        },
+        "required_label": {
+          "type": "Text",
+          "config": {
+            "label": "Required marker"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "partner_process_section",
+  "type": "SharedSlice",
+  "name": "PartnerProcessSection",
+  "description": "Partner program process section with three phase cards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "version": "initial",
+      "docURL": "",
+      "description": "Intro copy, background ribbon artwork, and process cards",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "multi": "heading2"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "multi": "paragraph"
+          }
+        },
+        "ribbon_image": {
+          "type": "Image",
+          "config": {
+            "label": "Ribbon background"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Card image"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Card title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Card description",
+            "multi": "paragraph"
+          }
+        }
+      }
+    }
+  ]
+}
