@@ -1,8 +1,62 @@
 <form class="partner-contact-form" aria-label="Partner contact form">
-  <span class="partner-contact-form__field" aria-hidden="true"></span>
-  <span class="partner-contact-form__field" aria-hidden="true"></span>
-  <span class="partner-contact-form__field" aria-hidden="true"></span>
-  <span class="partner-contact-form__field" aria-hidden="true"></span>
-  <span class="partner-contact-form__field" aria-hidden="true"></span>
-  <span class="partner-contact-form__submit" aria-hidden="true"></span>
+  <label class="partner-contact-form__field">
+    <span>First and Last name <abbr title="required">*</abbr></span>
+    <input type="text" name="full-name" placeholder="Valeriya Jacobson jr" required />
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Company <abbr title="required">*</abbr></span>
+    <input type="text" name="company" placeholder="Your company" required />
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Business email <abbr title="required">*</abbr></span>
+    <input type="email" name="email" placeholder="you@yourcompany.com" required />
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Phone</span>
+    <input type="tel" name="phone" placeholder="+49 12300000000" />
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Partner type <abbr title="required">*</abbr></span>
+    <select name="partner-type" required>
+      <option value="">Select at least one</option>
+      <option value="erp-provider">ERP provider</option>
+      <option value="it-consultancy">IT consultancy</option>
+      <option value="system-integrator">System integrator</option>
+    </select>
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Industry <abbr title="required">*</abbr></span>
+    <select name="industry" required>
+      <option value="">Select at least one</option>
+      <option value="automotive">Automotive</option>
+      <option value="grocery">Grocery</option>
+      <option value="retail">Retail</option>
+    </select>
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>System focus</span>
+    <input type="text" name="system-focus" placeholder="e.g. SAP, Microsoft" />
+  </label>
+
+  <label class="partner-contact-form__field">
+    <span>Questions or comments</span>
+    <textarea
+      name="message"
+      rows="2"
+      placeholder="Anything you would like to add for optimal feedback"
+    ></textarea>
+  </label>
+
+  <label class="partner-contact-form__privacy">
+    <input type="checkbox" name="privacy" required />
+    <span>By submitting this form, I agree with the privacy policy</span>
+  </label>
+
+  <button class="partner-contact-form__submit" type="submit">Submit</button>
 </form>
