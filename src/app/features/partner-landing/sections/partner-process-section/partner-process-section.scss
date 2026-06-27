@@ -66,51 +66,14 @@
 }
 
 .partner-process-section__ribbons {
+  width: calc(100% + 104.5px);
+  height: 408px;
   position: absolute;
-  inset: 0;
+  top: 365px;
+  left: -20px;
   z-index: 0;
+  background: url('/assets/partner-program/ribbon-frame.svg') center / 100% 100% no-repeat;
   pointer-events: none;
-}
-
-.partner-process-section__ribbon-svg {
-  width: calc(100% + 360px);
-  position: absolute;
-  left: -180px;
-  overflow: visible;
-}
-
-.partner-process-section__ribbon-svg--red {
-  height: 266px;
-  top: 315px;
-}
-
-.partner-process-section__ribbon-svg--violet {
-  height: 165px;
-  top: 435px;
-}
-
-.partner-process-section__ribbon-svg--mint {
-  height: 333px;
-  top: 335px;
-}
-
-.partner-process-section__ribbon {
-  fill: none;
-  opacity: 0.96;
-  stroke-width: 22px;
-  vector-effect: non-scaling-stroke;
-}
-
-.partner-process-section__ribbon--red {
-  stroke: var(--color-red);
-}
-
-.partner-process-section__ribbon--mint {
-  stroke: var(--color-mint);
-}
-
-.partner-process-section__ribbon--violet {
-  stroke: var(--color-violet);
 }
 
 .partner-process-section__steps {
@@ -145,24 +108,11 @@
     gap: 24px;
   }
 
-  .partner-process-section__ribbon-svg {
+  .partner-process-section__ribbons {
     width: calc(100% + 620px);
-    left: -310px;
-  }
-
-  .partner-process-section__ribbon-svg--red {
-    height: 720px;
-    top: 260px;
-  }
-
-  .partner-process-section__ribbon-svg--violet {
-    height: 560px;
-    top: 420px;
-  }
-
-  .partner-process-section__ribbon-svg--mint {
     height: 760px;
     top: 320px;
+    left: -310px;
   }
 }
 
@@ -190,23 +140,10 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .partner-process-section__ribbon-svg {
+  .partner-process-section__ribbons {
     width: 606px;
-    left: -120px;
-  }
-
-  .partner-process-section__ribbon-svg--red {
-    height: 930px;
-    top: 243px;
-  }
-
-  .partner-process-section__ribbon-svg--violet {
-    height: 1160px;
-    top: 614px;
-  }
-
-  .partner-process-section__ribbon-svg--mint {
-    height: 1580px;
-    top: 116px;
+    height: 1320px;
+    top: 192px;
+    left: -132px;
   }
 }
