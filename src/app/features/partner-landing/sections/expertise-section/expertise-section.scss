@@ -14,14 +14,14 @@
   margin-inline: auto;
 }
 
-.expertise-section h2 {
+.expertise-section__title {
   margin: 0 0 16px;
   font-size: 36px;
   font-weight: 700;
   line-height: 1.4;
 }
 
-.expertise-section p {
+.expertise-section__text {
   margin: 0;
   font-size: 36px;
   font-weight: 300;
@@ -33,8 +33,8 @@
     padding: 8px clamp(24px, 6vw, 48px) 64px;
   }
 
-  .expertise-section h2,
-  .expertise-section p {
+  .expertise-section__title,
+  .expertise-section__text {
     font-size: clamp(27px, 4vw, 36px);
   }
 }
@@ -44,12 +44,12 @@
     padding: 4px 24px 48px;
   }
 
-  .expertise-section h2 {
+  .expertise-section__title {
     margin-bottom: 12px;
   }
 
-  .expertise-section h2,
-  .expertise-section p {
+  .expertise-section__title,
+  .expertise-section__text {
     font-size: 24px;
     line-height: 1.34;
   }
