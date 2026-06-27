@@ -6,10 +6,23 @@
   width: min(100%, var(--container-width));
   margin-inline: auto;
   padding: clamp(4rem, 9vw, 7rem) var(--container-padding);
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 0.85fr);
   align-items: center;
   gap: clamp(2rem, 8vw, 6rem);
+}
+
+.contact-section::before {
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  content: '';
+  background-image: url('/assets/contact/bottom-bg.png');
+  background-position: center calc(78% + clamp(7rem, 16vw, 15rem));
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .contact-section__content {
