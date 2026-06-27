@@ -6,7 +6,7 @@
   width: min(calc(100% - 96px), 1317px);
   margin-inline: auto;
   padding-bottom: 112px;
-  background: var(--page-background);
+  background: var(--color-page);
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -24,15 +24,19 @@
   align-items: flex-end;
   overflow: hidden;
   border-radius: 24px;
-  background: #1d1d1d;
-  color: #ffffff;
+  background: var(--color-almost-black);
+  color: var(--color-white);
 }
 
 .benefit-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.08) 32%, rgb(0 0 0 / 0.82) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--shadow-10) 32%,
+    var(--overlay-black-80) 100%
+  );
 }
 
 .benefit-card__media {

@@ -6,7 +6,7 @@
   height: 119px;
   position: relative;
   z-index: 2;
-  background: var(--page-background);
+  background: var(--color-page);
 }
 
 .site-header__frame {
@@ -38,7 +38,7 @@
   position: absolute;
   top: 27px;
   left: calc(100% - 40px);
-  color: #858585;
+  color: var(--color-gray-400);
   font-family: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
   font-size: 12px;
   letter-spacing: 0.02em;

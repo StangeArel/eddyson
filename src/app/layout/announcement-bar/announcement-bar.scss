@@ -5,7 +5,7 @@
 .announcement-bar {
   height: 65px;
   padding-top: 24px;
-  background: var(--page-background);
+  background: var(--color-page);
 }
 
 .announcement-bar__inner {
@@ -17,14 +17,14 @@
   justify-content: center;
   gap: 10px;
   padding: 10px 0;
-  background: #212121;
+  background: var(--color-charcoal);
 }
 
 .announcement-bar__text {
   width: 319px;
   height: 21px;
   margin: 0;
-  color: #ffffff;
+  color: var(--color-white);
   font-family: 'DM Sans', Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
