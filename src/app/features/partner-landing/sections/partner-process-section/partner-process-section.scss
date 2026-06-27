@@ -9,37 +9,26 @@
 
 .partner-process-section__frame {
   width: min(calc(100% - 48px), 1243px);
-  min-height: 784px;
+  min-height: 782px;
   margin-inline: auto;
-  padding: 70px 100px 56px;
+  padding: 70px 0 56px;
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
-  background:
-    radial-gradient(
-      circle at 10% 11%,
-      var(--overlay-yellow-05),
-      var(--color-none) 26%
-    ),
-    linear-gradient(
-      135deg,
-      var(--color-ink) 0%,
-      var(--color-charcoal) 54%,
-      var(--color-almost-black) 100%
-    );
+  border-radius: 24px;
+  background: linear-gradient(222.63deg, var(--color-charcoal) 15.95%, var(--color-black) 83.67%);
   color: var(--color-page);
   font-family: 'DM Sans', sans-serif;
 }
 
 .partner-process-section__intro {
-  width: min(100%, 620px);
-  margin: 0 0 82px min(20%, 248px);
+  width: min(calc(100% - 504px), 739px);
+  margin: 0 0 70px 252px;
   position: relative;
   z-index: 2;
 }
 
 .partner-process-section__eyebrow {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   padding: 4px 10px;
   display: inline-flex;
   align-items: center;
@@ -61,20 +50,19 @@
 }
 
 .partner-process-section__title {
-  margin: 0 0 10px;
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: 1.18;
+  margin: 0 0 8px;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .partner-process-section__text {
-  max-width: 586px;
   margin: 0;
-  color: var(--overlay-white-50);
-  font-size: 16px;
-  letter-spacing: 0.01em;
-  line-height: 1.42;
+  color: var(--color-logo-strip);
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
 }
 
 .partner-process-section__ribbons {
@@ -131,7 +119,7 @@
   display: grid;
   grid-template-columns: repeat(3, 333px);
   justify-content: center;
-  gap: 44px;
+  gap: 20px;
 }
 
 @media (max-width: 74rem) {
@@ -144,7 +132,12 @@
   }
 
   .partner-process-section__intro {
+    width: min(100%, 739px);
     margin: 0 0 56px;
+  }
+
+  .partner-process-section__text {
+    font-size: clamp(18px, 2.5vw, 24px);
   }
 
   .partner-process-section__steps {
@@ -187,6 +180,10 @@
 
   .partner-process-section__title {
     font-size: 26px;
+  }
+
+  .partner-process-section__text {
+    font-size: 17px;
   }
 
   .partner-process-section__steps {
