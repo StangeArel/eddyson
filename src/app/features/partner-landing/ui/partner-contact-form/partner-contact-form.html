@@ -1,27 +1,106 @@
-<form class="partner-contact-form" aria-label="Partner contact form">
-  <label class="partner-contact-form__field">
-    <span>First and Last name <abbr title="required">*</abbr></span>
-    <input type="text" name="full-name" placeholder="Valeriya Jacobson jr" required />
+<form
+  class="partner-contact-form"
+  [formGroup]="partnerForm"
+  aria-label="Partner contact form"
+  novalidate
+  (ngSubmit)="onSubmit()"
+>
+  <label
+    class="partner-contact-form__field"
+    [class.partner-contact-form__field--invalid]="hasError('fullName')"
+  >
+    <span class="partner-contact-form__label">
+      First and Last name
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
+    <input
+      type="text"
+      name="full-name"
+      placeholder="Valery Jacobson jr III"
+      formControlName="fullName"
+      aria-required="true"
+      [attr.aria-invalid]="hasError('fullName')"
+    />
   </label>
 
-  <label class="partner-contact-form__field">
-    <span>Company <abbr title="required">*</abbr></span>
-    <input type="text" name="company" placeholder="Your company" required />
+  <label
+    class="partner-contact-form__field"
+    [class.partner-contact-form__field--invalid]="hasError('company')"
+  >
+    <span class="partner-contact-form__label">
+      Company
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
+    <input
+      type="text"
+      name="company"
+      placeholder="Your company"
+      formControlName="company"
+      aria-required="true"
+      [attr.aria-invalid]="hasError('company')"
+    />
   </label>
 
-  <label class="partner-contact-form__field">
-    <span>Business email <abbr title="required">*</abbr></span>
-    <input type="email" name="email" placeholder="you@yourcompany.com" required />
+  <label
+    class="partner-contact-form__field"
+    [class.partner-contact-form__field--invalid]="hasError('email')"
+  >
+    <span class="partner-contact-form__label">
+      Business email
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
+    <input
+      type="email"
+      name="email"
+      placeholder="you@yourcompany.com"
+      formControlName="email"
+      aria-required="true"
+      [attr.aria-invalid]="hasError('email')"
+    />
   </label>
 
-  <label class="partner-contact-form__field">
-    <span>Phone</span>
-    <input type="tel" name="phone" placeholder="+49 12300000000" />
+  <label class="partner-contact-form__field partner-contact-form__field--phone">
+    <span class="partner-contact-form__label">Phone</span>
+    <span class="partner-contact-form__phone-control">
+      <select
+        class="partner-contact-form__country-select"
+        name="phone-country"
+        formControlName="phoneCountry"
+        aria-label="Phone country"
+        (change)="onPhoneCountryChange()"
+      >
+        @for (country of phoneCountries; track country.iso) {
+          <option [value]="country.iso">{{ country.flag }} {{ country.dialCode }}</option>
+        }
+      </select>
+      <input
+        type="tel"
+        name="phone"
+        [placeholder]="phonePlaceholder()"
+        formControlName="phone"
+        (input)="onPhoneInput()"
+      />
+    </span>
   </label>
 
-  <label class="partner-contact-form__field">
-    <span>Partner type <abbr title="required">*</abbr></span>
-    <select name="partner-type" required>
+  <label
+    class="partner-contact-form__field"
+    [class.partner-contact-form__field--invalid]="hasError('partnerType')"
+  >
+    <span class="partner-contact-form__label">
+      Partner type
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
+    <select
+      name="partner-type"
+      formControlName="partnerType"
+      aria-required="true"
+      [attr.aria-invalid]="hasError('partnerType')"
+    >
       <option value="">Select at least one</option>
       <option value="erp-provider">ERP provider</option>
       <option value="it-consultancy">IT consultancy</option>
@@ -29,9 +108,21 @@
     </select>
   </label>
 
-  <label class="partner-contact-form__field">
-    <span>Industry <abbr title="required">*</abbr></span>
-    <select name="industry" required>
+  <label
+    class="partner-contact-form__field"
+    [class.partner-contact-form__field--invalid]="hasError('industry')"
+  >
+    <span class="partner-contact-form__label">
+      Industry
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
+    <select
+      name="industry"
+      formControlName="industry"
+      aria-required="true"
+      [attr.aria-invalid]="hasError('industry')"
+    >
       <option value="">Select at least one</option>
       <option value="automotive">Automotive</option>
       <option value="grocery">Grocery</option>
@@ -40,23 +131,41 @@
   </label>
 
   <label class="partner-contact-form__field">
-    <span>System focus</span>
-    <input type="text" name="system-focus" placeholder="e.g. SAP, Microsoft" />
+    <span class="partner-contact-form__label">System focus</span>
+    <input
+      type="text"
+      name="system-focus"
+      placeholder="e.g. SAP, Microsoft"
+      formControlName="systemFocus"
+    />
   </label>
 
   <label class="partner-contact-form__field">
-    <span>Questions or comments</span>
+    <span class="partner-contact-form__label">Questions or comments</span>
     <textarea
       name="message"
       rows="2"
       placeholder="Anything you would like to add for optimal feedback"
+      formControlName="message"
     ></textarea>
   </label>
 
-  <label class="partner-contact-form__privacy">
-    <input type="checkbox" name="privacy" required />
+  <label
+    class="partner-contact-form__privacy"
+    [class.partner-contact-form__privacy--invalid]="hasError('privacy')"
+  >
+    <input
+      type="checkbox"
+      name="privacy"
+      formControlName="privacy"
+      [attr.aria-invalid]="hasError('privacy')"
+    />
     <span>By submitting this form, I agree with the privacy policy</span>
   </label>
 
   <button class="partner-contact-form__submit" type="submit">Submit</button>
+
+  @if (submitMessage()) {
+    <p class="partner-contact-form__status" role="status">{{ submitMessage() }}</p>
+  }
 </form>
