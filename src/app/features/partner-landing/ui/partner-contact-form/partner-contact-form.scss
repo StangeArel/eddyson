@@ -124,7 +124,6 @@
   padding: 0 0 0 12px;
   background-image: none;
   color: var(--color-gray-700);
-  cursor: pointer;
   font-size: 18px;
 }
 
@@ -160,6 +159,7 @@
   border-radius: 4px;
   background: var(--color-white);
   box-shadow: none;
+  cursor: pointer;
 }
 
 .partner-contact-form__privacy input::after {
