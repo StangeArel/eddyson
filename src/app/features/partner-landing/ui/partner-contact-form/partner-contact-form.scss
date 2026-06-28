@@ -27,6 +27,13 @@
   line-height: 1;
 }
 
+.partner-contact-form__field--message {
+  height: auto;
+  min-height: 48px;
+  padding-top: 8px;
+  align-items: flex-start;
+}
+
 .partner-contact-form__label {
   padding: 2px 4px;
   position: absolute;
@@ -121,6 +128,9 @@
 }
 
 .partner-contact-form textarea {
+  min-height: 40px;
+  overflow-y: hidden;
+  line-height: 1.2;
   resize: none;
 }
 
