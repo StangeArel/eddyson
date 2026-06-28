@@ -62,18 +62,27 @@
     />
   </label>
 
-  <label class="partner-contact-form__field partner-contact-form__field--phone">
-    <span class="partner-contact-form__label">Phone</span>
+  <label
+    class="partner-contact-form__field partner-contact-form__field--phone"
+    [class.partner-contact-form__field--invalid]="hasError('phone')"
+  >
+    <span class="partner-contact-form__label">
+      Phone
+      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+      <span class="partner-contact-form__sr-only">required</span>
+    </span>
     <span class="partner-contact-form__phone-control">
       <select
         class="partner-contact-form__country-select"
         name="phone-country"
         formControlName="phoneCountry"
-        aria-label="Phone country"
+        [attr.aria-label]="
+          'Phone country, ' + selectedPhoneCountry().name + ' ' + selectedPhoneCountry().dialCode
+        "
         (change)="onPhoneCountryChange()"
       >
         @for (country of phoneCountries; track country.iso) {
-          <option [value]="country.iso">{{ country.flag }} {{ country.dialCode }}</option>
+          <option [value]="country.iso">{{ country.flag }}</option>
         }
       </select>
       <input
@@ -81,6 +90,8 @@
         name="phone"
         [placeholder]="phonePlaceholder()"
         formControlName="phone"
+        aria-required="true"
+        [attr.aria-invalid]="hasError('phone')"
         (input)="onPhoneInput()"
       />
     </span>
