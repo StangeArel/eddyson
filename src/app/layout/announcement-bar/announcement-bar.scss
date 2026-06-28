@@ -35,6 +35,7 @@
 .announcement-bar__link-text {
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: pointer;
 }
 
 @media (max-width: 40rem) {
