@@ -2,13 +2,13 @@
 <app-site-header />
 
 <main class="landing-page">
-  <app-hero-section [slice]="heroSlice()" />
-  <app-customer-logo-strip />
-  <app-partner-process-section />
-  <app-expertise-section />
-  <app-partnership-model-section />
-  <app-benefits-section />
-  <app-contact-section />
+  <app-hero-section [slice]="sections().heroSection" />
+  <app-customer-logo-strip [slice]="sections().customerLogoStrip" />
+  <app-partner-process-section [slice]="sections().partnerProcessSection" />
+  <app-expertise-section [slice]="sections().expertiseSection" />
+  <app-partnership-model-section [slice]="sections().partnershipModelSection" />
+  <app-benefits-section [slice]="sections().benefitsSection" />
+  <app-contact-section [slice]="sections().contactSection" />
 </main>
 
 <app-site-footer />

@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { PrismicContentService } from '../../core/prismic/prismic-content.service';
-import type { HeroSectionSlice } from '../../core/prismic/prismic.types';
+import type { PartnerLandingSections } from '../../core/prismic/prismic.types';
 import { AnnouncementBar } from '../../layout/announcement-bar/announcement-bar';
 import { SiteFooter } from '../../layout/site-footer/site-footer';
 import { SiteHeader } from '../../layout/site-header/site-header';
@@ -32,17 +32,33 @@ import { PartnershipModelSection } from './sections/partnership-model-section/pa
 export class PartnerLanding implements OnInit {
   private readonly prismicContent = inject(PrismicContentService);
 
-  protected readonly heroSlice = signal<HeroSectionSlice | null>(null);
+  protected readonly sections = signal<PartnerLandingSections>({
+    heroSection: null,
+    customerLogoStrip: null,
+    partnerProcessSection: null,
+    expertiseSection: null,
+    partnershipModelSection: null,
+    benefitsSection: null,
+    contactSection: null,
+  });
 
   ngOnInit(): void {
-    void this.loadHeroContent();
+    void this.loadPageContent();
   }
 
-  private async loadHeroContent(): Promise<void> {
+  private async loadPageContent(): Promise<void> {
     try {
-      this.heroSlice.set(await this.prismicContent.getHeroSection());
+      this.sections.set(await this.prismicContent.getPartnerLandingSections());
     } catch {
-      this.heroSlice.set(null);
+      this.sections.set({
+        heroSection: null,
+        customerLogoStrip: null,
+        partnerProcessSection: null,
+        expertiseSection: null,
+        partnershipModelSection: null,
+        benefitsSection: null,
+        contactSection: null,
+      });
     }
   }
 }

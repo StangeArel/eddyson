@@ -15,7 +15,15 @@ describe('PartnerLanding', () => {
         {
           provide: PrismicContentService,
           useValue: {
-            getHeroSection: vi.fn().mockResolvedValue(null),
+            getPartnerLandingSections: vi.fn().mockResolvedValue({
+              heroSection: null,
+              customerLogoStrip: null,
+              partnerProcessSection: null,
+              expertiseSection: null,
+              partnershipModelSection: null,
+              benefitsSection: null,
+              contactSection: null,
+            }),
           },
         },
       ],
