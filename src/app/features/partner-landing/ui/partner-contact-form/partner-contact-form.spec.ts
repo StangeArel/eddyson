@@ -49,7 +49,7 @@ describe('PartnerContactForm', () => {
       email: 'valeriya@example.com',
       phoneCountry: 'fr',
       phone: '+33 6 12 34 56 78',
-      partnerType: 'erp-provider',
+      partnerType: 'implementation-partner',
       industry: 'retail',
       systemFocus: 'SAP, Microsoft',
       message: 'Please contact me about the partner program.',
@@ -94,5 +94,23 @@ describe('PartnerContactForm', () => {
     expect(formComponent.partnerForm.controls.phoneCountry.value).toBe('fr');
     expect(countrySelect.value).toBe('fr');
     expect(phoneInput.placeholder).toContain('+33');
+  });
+
+  it('should let the message field grow without a character limit', () => {
+    const messageTextarea = fixture.nativeElement.querySelector(
+      'textarea[name="message"]',
+    ) as HTMLTextAreaElement;
+
+    expect(messageTextarea.hasAttribute('maxlength')).toBe(false);
+
+    Object.defineProperty(messageTextarea, 'scrollHeight', {
+      configurable: true,
+      value: 72,
+    });
+
+    messageTextarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(messageTextarea.style.height).toBe('72px');
   });
 });

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 type PhoneCountry = {
@@ -6,7 +6,7 @@ type PhoneCountry = {
   readonly name: string;
   readonly flag: string;
   readonly dialCode: string;
-  readonly example: string;
+  readonly placeholder: string;
 };
 
 const PHONE_COUNTRIES = [
@@ -15,49 +15,49 @@ const PHONE_COUNTRIES = [
     name: 'Germany',
     flag: '🇩🇪',
     dialCode: '+49',
-    example: '+49 151 12345678',
+    placeholder: '+490000000000',
   },
   {
     iso: 'fr',
     name: 'France',
     flag: '🇫🇷',
     dialCode: '+33',
-    example: '+33 6 12 34 56 78',
+    placeholder: '+33000000000',
   },
   {
     iso: 'at',
     name: 'Austria',
     flag: '🇦🇹',
     dialCode: '+43',
-    example: '+43 664 1234567',
+    placeholder: '+430000000000',
   },
   {
     iso: 'ch',
     name: 'Switzerland',
     flag: '🇨🇭',
     dialCode: '+41',
-    example: '+41 79 123 45 67',
+    placeholder: '+41000000000',
   },
   {
     iso: 'nl',
     name: 'Netherlands',
     flag: '🇳🇱',
     dialCode: '+31',
-    example: '+31 6 12345678',
+    placeholder: '+31000000000',
   },
   {
     iso: 'gb',
     name: 'United Kingdom',
     flag: '🇬🇧',
     dialCode: '+44',
-    example: '+44 7700 900123',
+    placeholder: '+440000000000',
   },
   {
     iso: 'us',
     name: 'United States',
     flag: '🇺🇸',
     dialCode: '+1',
-    example: '+1 555 123 4567',
+    placeholder: '+10000000000',
   },
 ] satisfies readonly PhoneCountry[];
 
@@ -69,6 +69,7 @@ const PHONE_COUNTRIES = [
 })
 export class PartnerContactForm {
   private readonly formBuilder = inject(FormBuilder);
+  private readonly messageTextarea = viewChild<ElementRef<HTMLTextAreaElement>>('messageTextarea');
 
   protected readonly phoneCountries = PHONE_COUNTRIES;
   protected readonly wasSubmitted = signal(false);
@@ -79,7 +80,7 @@ export class PartnerContactForm {
     company: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phoneCountry: [PHONE_COUNTRIES[0].iso],
-    phone: [''],
+    phone: ['', Validators.required],
     partnerType: ['', Validators.required],
     industry: ['', Validators.required],
     systemFocus: [''],
@@ -91,7 +92,7 @@ export class PartnerContactForm {
     this.wasSubmitted() ? 'Thanks, your request is ready for partner management review.' : '',
   );
 
-  protected readonly phonePlaceholder = computed(() => this.selectedPhoneCountry().example);
+  protected readonly phonePlaceholder = computed(() => this.selectedPhoneCountry().placeholder);
 
   protected onPhoneCountryChange(): void {
     const selectedCountry = this.findPhoneCountryByIso(
@@ -136,12 +137,20 @@ export class PartnerContactForm {
       message: '',
       privacy: false,
     });
+    queueMicrotask(() => this.resetMessageTextareaHeight());
   }
 
   protected hasError(controlName: keyof typeof this.partnerForm.controls): boolean {
     const control = this.partnerForm.controls[controlName];
 
     return control.invalid && (control.touched || control.dirty);
+  }
+
+  protected resizeMessageTextarea(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+
+    textarea.style.height = '40px';
+    textarea.style.height = `${Math.max(40, textarea.scrollHeight)}px`;
   }
 
   private findPhoneCountryByIso(iso: string): PhoneCountry | undefined {
@@ -158,5 +167,13 @@ export class PartnerContactForm {
     return [...this.phoneCountries]
       .sort((countryA, countryB) => countryB.dialCode.length - countryA.dialCode.length)
       .find((country) => normalizedValue.startsWith(country.dialCode));
+  }
+
+  private resetMessageTextareaHeight(): void {
+    const textarea = this.messageTextarea()?.nativeElement;
+
+    if (textarea) {
+      textarea.style.height = '';
+    }
   }
 }

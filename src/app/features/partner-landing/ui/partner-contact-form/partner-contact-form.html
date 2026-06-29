@@ -113,9 +113,9 @@
       [attr.aria-invalid]="hasError('partnerType')"
     >
       <option value="">Select at least one</option>
-      <option value="erp-provider">ERP provider</option>
-      <option value="it-consultancy">IT consultancy</option>
-      <option value="system-integrator">System integrator</option>
+      <option value="implementation-partner">Implementation Partner</option>
+      <option value="sales-partner">Sales Partner</option>
+      <option value="other">Other</option>
     </select>
   </label>
 
@@ -137,7 +137,9 @@
       <option value="">Select at least one</option>
       <option value="automotive">Automotive</option>
       <option value="grocery">Grocery</option>
+      <option value="logistics">Logistics</option>
       <option value="retail">Retail</option>
+      <option value="production">Production</option>
     </select>
   </label>
 
@@ -151,13 +153,15 @@
     />
   </label>
 
-  <label class="partner-contact-form__field">
+  <label class="partner-contact-form__field partner-contact-form__field--message">
     <span class="partner-contact-form__label">Questions or comments</span>
     <textarea
+      #messageTextarea
       name="message"
       rows="2"
       placeholder="Anything you would like to add for optimal feedback"
       formControlName="message"
+      (input)="resizeMessageTextarea($event)"
     ></textarea>
   </label>
 
