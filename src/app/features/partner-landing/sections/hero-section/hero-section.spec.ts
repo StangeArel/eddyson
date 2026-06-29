@@ -94,6 +94,12 @@ describe('HeroSection', () => {
     expect(nativeElement.querySelector('.hero-section__teaser-text')?.textContent).toContain(
       'At eddyson',
     );
+    expect(
+      nativeElement.querySelector('.hero-section__button--secondary')?.getAttribute('href'),
+    ).toBe('#partner-benefits');
+    expect(
+      nativeElement.querySelector('.hero-section__button--primary')?.getAttribute('href'),
+    ).toBe('#partner-contact');
     expect(nativeElement.querySelector('.hero-section__background--dots')).not.toBeNull();
     expect(nativeElement.querySelector('app-hero-request-panel img')?.getAttribute('src')).toBe(
       'https://images.prismic.io/request-panel.png',

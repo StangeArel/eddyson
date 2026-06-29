@@ -83,6 +83,7 @@
 .hero-section__visuals {
   position: absolute;
   inset: 0;
+  pointer-events: none;
 }
 
 .hero-section__request-panel,
@@ -118,6 +119,7 @@
   position: absolute;
   left: 102px;
   top: 109px;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -151,30 +153,57 @@
 
 .hero-section__button {
   height: 57px;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 18px 24px;
+  border: 2px solid #161616;
   border-radius: 8px;
   font: 500 16px/21px inherit;
   letter-spacing: 0.02em;
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
 }
 
 .hero-section__button--secondary {
   width: 174px;
-  border: 2px solid #161616;
   background: transparent;
   color: #212121;
 }
 
 .hero-section__button--primary {
   width: 189px;
-  border: 0;
+  border-color: transparent;
   background: #161616;
   box-shadow: 0 1px 8px rgb(0 0 0 / 0.25);
   color: #f8f8f8;
+}
+
+.hero-section__button--secondary:hover,
+.hero-section__button--secondary:focus-visible {
+  background: #161616;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 0.25);
+  color: #f8f8f8;
+}
+
+.hero-section__button--primary:hover,
+.hero-section__button--primary:focus-visible {
+  border-color: #161616;
+  background: transparent;
+  box-shadow: none;
+  color: #212121;
+}
+
+.hero-section__button:focus-visible {
+  outline: 2px solid #f8f8f8;
+  outline-offset: 3px;
 }
 
 @media (max-width: 74rem) {
