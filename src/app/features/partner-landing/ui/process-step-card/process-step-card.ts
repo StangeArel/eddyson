@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ProcessStepCard {
   @Input({ required: true }) imageSrc = '';
+  @Input() imageAlt = '';
   @Input({ required: true }) title = '';
   @Input({ required: true }) description = '';
 }

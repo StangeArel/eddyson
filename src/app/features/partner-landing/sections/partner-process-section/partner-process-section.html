@@ -1,26 +1,82 @@
-<section class="partner-process-section" aria-labelledby="partner-process-title">
+<section
+  class="partner-process-section"
+  [attr.aria-labelledby]="content() ? 'partner-process-title' : null"
+  [attr.aria-label]="content() ? null : 'Partner process loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
   <div class="partner-process-section__frame">
-    <div class="partner-process-section__ribbons" aria-hidden="true"></div>
-
-    <header class="partner-process-section__intro">
-      <p class="partner-process-section__eyebrow">Partner program</p>
-      <h2 id="partner-process-title" class="partner-process-section__title">
-        Efficient processes right from the start
-      </h2>
-      <p class="partner-process-section__text">
-        Choosing eddyson means choosing a partnership built on trust, quality, and strategic
-        foresight. Our 3-phase program lays the foundation for long-term success.
-      </p>
-    </header>
-
-    <div class="partner-process-section__steps" aria-label="Partner program phases">
-      @for (step of steps; track step.title) {
-        <app-process-step-card
-          [imageSrc]="step.imageSrc"
-          [title]="step.title"
-          [description]="step.description"
+    @if (content(); as processContent) {
+      @if (processContent.ribbonImage; as ribbonImage) {
+        <img
+          class="partner-process-section__ribbons"
+          [src]="ribbonImage.src"
+          alt=""
+          aria-hidden="true"
         />
       }
-    </div>
+
+      <header class="partner-process-section__intro">
+        <p class="partner-process-section__eyebrow">{{ processContent.eyebrow }}</p>
+        <h2 id="partner-process-title" class="partner-process-section__title">
+          {{ processContent.title }}
+        </h2>
+        <p class="partner-process-section__text">{{ processContent.text }}</p>
+      </header>
+
+      <div class="partner-process-section__steps" aria-label="Partner program phases">
+        @for (step of processContent.steps; track step.title) {
+          <app-process-step-card
+            [imageSrc]="step.image.src"
+            [imageAlt]="step.image.alt"
+            [title]="step.title"
+            [description]="step.description"
+          />
+        }
+      </div>
+    } @else {
+      <div
+        class="partner-process-section__ribbons partner-process-section__ribbons--skeleton"
+      ></div>
+      <header class="partner-process-section__intro">
+        <span
+          class="app-skeleton partner-process-section__eyebrow"
+          style="--skeleton-width: 140px; --skeleton-height: 24px"
+        ></span>
+        <span
+          class="app-skeleton"
+          style="--skeleton-width: min(100%, 720px); --skeleton-height: 50px"
+        ></span>
+        <span
+          class="app-skeleton"
+          style="--skeleton-width: min(100%, 690px); --skeleton-height: 30px"
+        ></span>
+        <span
+          class="app-skeleton"
+          style="--skeleton-width: min(100%, 520px); --skeleton-height: 30px"
+        ></span>
+      </header>
+      <div class="partner-process-section__steps" aria-hidden="true">
+        @for (item of [1, 2, 3]; track item) {
+          <article class="process-step-card process-step-card--skeleton">
+            <span
+              class="app-skeleton process-step-card__image"
+              style="--skeleton-radius: 8px; --skeleton-color: #ffffff24"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 45%; --skeleton-height: 22px; --skeleton-color: #ffffff3d"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 92%; --skeleton-height: 16px; --skeleton-color: #ffffff29"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 74%; --skeleton-height: 16px; --skeleton-color: #ffffff29"
+            ></span>
+          </article>
+        }
+      </div>
+    }
   </div>
 </section>
