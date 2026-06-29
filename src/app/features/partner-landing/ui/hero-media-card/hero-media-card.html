@@ -1,3 +1,5 @@
 <article class="hero-media-card">
-  <img src="/assets/hero-ui/video-thumbnail-card.png" alt="" />
+  @if (imageSrc()) {
+    <img [src]="imageSrc()" [alt]="imageAlt()" />
+  }
 </article>

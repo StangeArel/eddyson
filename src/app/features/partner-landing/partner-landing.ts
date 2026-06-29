@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { PrismicContentService } from '../../core/prismic/prismic-content.service';
+import type { HeroSectionSlice } from '../../core/prismic/prismic.types';
 import { AnnouncementBar } from '../../layout/announcement-bar/announcement-bar';
 import { SiteFooter } from '../../layout/site-footer/site-footer';
 import { SiteHeader } from '../../layout/site-header/site-header';
@@ -27,4 +29,20 @@ import { PartnershipModelSection } from './sections/partnership-model-section/pa
   templateUrl: './partner-landing.html',
   styleUrl: './partner-landing.scss',
 })
-export class PartnerLanding {}
+export class PartnerLanding implements OnInit {
+  private readonly prismicContent = inject(PrismicContentService);
+
+  protected readonly heroSlice = signal<HeroSectionSlice | null>(null);
+
+  ngOnInit(): void {
+    void this.loadHeroContent();
+  }
+
+  private async loadHeroContent(): Promise<void> {
+    try {
+      this.heroSlice.set(await this.prismicContent.getHeroSection());
+    } catch {
+      this.heroSlice.set(null);
+    }
+  }
+}

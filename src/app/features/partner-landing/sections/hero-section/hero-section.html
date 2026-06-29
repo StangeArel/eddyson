@@ -1,40 +1,170 @@
-<section class="hero-section" aria-labelledby="hero-title">
+<section
+  class="hero-section"
+  [attr.aria-labelledby]="content() ? 'hero-title' : null"
+  [attr.aria-label]="content() ? null : 'Hero section loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
   <div class="hero-section__frame">
-    <h1 id="hero-title" class="hero-section__title">
-      Your partner<br />
-      in the EDI jungle
-    </h1>
+    @if (content(); as heroContent) {
+      @if (heroContent.dotBackground; as dotBackground) {
+        <img
+          class="hero-section__background hero-section__background--dots"
+          [src]="dotBackground.src"
+          alt=""
+          aria-hidden="true"
+        />
+      }
+      @if (heroContent.gradientOverlay; as gradientOverlay) {
+        <img
+          class="hero-section__background hero-section__background--gradient"
+          [src]="gradientOverlay.src"
+          alt=""
+          aria-hidden="true"
+        />
+      }
 
-    <div class="hero-section__teaser">
-      <span class="hero-section__teaser-label" aria-hidden="true">
-        Select. Connect. Evolve.
-      </span>
-      <div class="hero-section__teaser-content">
-        <div class="hero-section__copy">
-          <h2 class="hero-section__teaser-title">Fast + Scalable + Successful</h2>
-          <p class="hero-section__teaser-text">
-            At eddyson, we believe in technology that connects and partnerships that last. Together,
-            we help you support customers in industries such as automotive, grocery, and retail with
-            EDI solutions that simplify processes, accelerate projects, and give you a competitive
-            edge.
-          </p>
+      <h1 id="hero-title" class="hero-section__title">
+        @for (titleLine of titleLines(); track titleLine; let isLast = $last) {
+          {{ titleLine }}
+          @if (!isLast) {
+            <br />
+          }
+        }
+      </h1>
+
+      <div class="hero-section__teaser">
+        <span class="hero-section__teaser-label" aria-hidden="true">
+          {{ heroContent.teaserLabel }}
+        </span>
+        <div class="hero-section__teaser-content">
+          <div class="hero-section__copy">
+            <h2 class="hero-section__teaser-title">{{ heroContent.teaserTitle }}</h2>
+            <p class="hero-section__teaser-text">{{ heroContent.teaserText }}</p>
+          </div>
+
+          <div class="hero-section__actions" aria-label="Partnership actions">
+            <button class="hero-section__button hero-section__button--secondary" type="button">
+              {{ heroContent.secondaryButtonLabel }}
+            </button>
+            <button class="hero-section__button hero-section__button--primary" type="button">
+              {{ heroContent.primaryButtonLabel }}
+            </button>
+          </div>
         </div>
 
-        <div class="hero-section__actions" aria-label="Partnership actions">
-          <button class="hero-section__button hero-section__button--secondary" type="button">
-            Partner benefits
-          </button>
-          <button class="hero-section__button hero-section__button--primary" type="button">
-            Become a partner
-          </button>
+        <div class="hero-section__visuals" aria-hidden="true">
+          @if (heroContent.requestPanelImage; as requestPanelImage) {
+            <app-hero-request-panel
+              class="hero-section__request-panel"
+              [imageSrc]="requestPanelImage.src"
+              [imageAlt]="requestPanelImage.alt"
+            />
+          }
+          @if (heroContent.metricCardImage; as metricCardImage) {
+            <app-hero-metric-card
+              class="hero-section__metric-card"
+              [imageSrc]="metricCardImage.src"
+              [imageAlt]="metricCardImage.alt"
+            />
+          }
+          @if (heroContent.mediaCardImage; as mediaCardImage) {
+            <app-hero-media-card
+              class="hero-section__media-card"
+              [imageSrc]="mediaCardImage.src"
+              [imageAlt]="mediaCardImage.alt"
+            />
+          }
         </div>
       </div>
-
-      <div class="hero-section__visuals" aria-hidden="true">
-        <app-hero-request-panel class="hero-section__request-panel" />
-        <app-hero-metric-card class="hero-section__metric-card" />
-        <app-hero-media-card class="hero-section__media-card" />
+    } @else {
+      <div class="hero-section__title-skeleton" aria-hidden="true">
+        <span class="app-skeleton" style="--skeleton-width: 520px; --skeleton-height: 76px"></span>
+        <span class="app-skeleton" style="--skeleton-width: 470px; --skeleton-height: 76px"></span>
       </div>
-    </div>
+
+      <div class="hero-section__teaser">
+        <span
+          class="app-skeleton hero-section__teaser-label hero-section__teaser-label--skeleton"
+        ></span>
+        <div class="hero-section__teaser-content">
+          <div class="hero-section__copy">
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 430px; --skeleton-height: 42px; --skeleton-color: #16161633"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 100%; --skeleton-height: 18px; --skeleton-color: #16161629"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 100%; --skeleton-height: 18px; --skeleton-color: #16161629"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 86%; --skeleton-height: 18px; --skeleton-color: #16161629"
+            ></span>
+            <span
+              class="app-skeleton"
+              style="--skeleton-width: 64%; --skeleton-height: 18px; --skeleton-color: #16161629"
+            ></span>
+          </div>
+
+          <div class="hero-section__actions" aria-hidden="true">
+            <span
+              class="app-skeleton hero-section__button-skeleton"
+              style="
+                --skeleton-width: 174px;
+                --skeleton-height: 57px;
+                --skeleton-border: 2px solid #161616;
+                --skeleton-radius: 8px;
+                --skeleton-color: #ffffff2e;
+              "
+            ></span>
+            <span
+              class="app-skeleton hero-section__button-skeleton"
+              style="
+                --skeleton-width: 189px;
+                --skeleton-height: 57px;
+                --skeleton-radius: 8px;
+                --skeleton-color: #161616;
+              "
+            ></span>
+          </div>
+        </div>
+
+        <div class="hero-section__visuals hero-section__visuals--skeleton" aria-hidden="true">
+          <span
+            class="app-skeleton hero-section__request-panel hero-section__visual-skeleton"
+            style="
+              --skeleton-height: 382px;
+              --skeleton-ratio: 313 / 382;
+              --skeleton-radius: 12px;
+              --skeleton-color: #ffffff99;
+              --skeleton-shadow: 0 18px 48px rgb(0 0 0 / 0.16);
+            "
+          ></span>
+          <span
+            class="app-skeleton hero-section__metric-card hero-section__visual-skeleton"
+            style="
+              --skeleton-height: 178px;
+              --skeleton-radius: 12px;
+              --skeleton-color: #161616d9;
+              --skeleton-shadow: 0 18px 48px rgb(0 0 0 / 0.16);
+            "
+          ></span>
+          <span
+            class="app-skeleton hero-section__media-card hero-section__visual-skeleton"
+            style="
+              --skeleton-height: 232px;
+              --skeleton-ratio: 412 / 232;
+              --skeleton-radius: 12px;
+              --skeleton-color: #ffffff99;
+              --skeleton-shadow: 0 18px 48px rgb(0 0 0 / 0.16);
+            "
+          ></span>
+        </div>
+      </div>
+    }
   </div>
 </section>

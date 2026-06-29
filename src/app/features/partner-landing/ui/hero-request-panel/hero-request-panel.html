@@ -1,3 +1,5 @@
 <aside class="hero-request-panel">
-  <img src="/assets/hero-ui/request-list-panel.png" alt="" />
+  @if (imageSrc()) {
+    <img [src]="imageSrc()" [alt]="imageAlt()" />
+  }
 </aside>

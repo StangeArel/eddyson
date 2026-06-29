@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-hero-request-panel',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './hero-request-panel.html',
   styleUrl: './hero-request-panel.scss',
 })
-export class HeroRequestPanel {}
+export class HeroRequestPanel {
+  readonly imageSrc = input('');
+  readonly imageAlt = input('');
+}

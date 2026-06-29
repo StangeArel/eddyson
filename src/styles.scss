@@ -6,6 +6,17 @@
   box-sizing: border-box;
 }
 
+@keyframes app-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
 :root {
   --container-width: 78rem;
   --container-padding: clamp(1rem, 4vw, 2rem);
@@ -42,4 +53,15 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+.app-skeleton {
+  width: var(--skeleton-width, 100%);
+  height: var(--skeleton-height);
+  display: block;
+  border: var(--skeleton-border, 0);
+  border-radius: var(--skeleton-radius, 999px);
+  background: var(--skeleton-color, var(--color-logo-strip));
+  box-shadow: var(--skeleton-shadow, none);
+  animation: app-skeleton-pulse 1.4s ease-in-out infinite;
 }
