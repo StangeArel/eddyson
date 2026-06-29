@@ -1,47 +1,51 @@
-# Eddyson Web Developer Assessment
+# Eddyson Partner Landing Page
 
-Angular implementation of the eddyson partner landing page assessment.
+Angular implementation of the eddyson web developer assessment. The page is rendered with Angular and receives section content and images from Prismic.
 
-## Current Structure
+## Stack
 
-- Angular standalone application with SCSS and routing enabled
-- Root app shell kept minimal and route-driven
-- Partner landing page isolated in `src/app/features/partner-landing`
-- Page-level layout components live in `src/app/layout`
-- Landing page sections live in `src/app/features/partner-landing/sections`
-- Reusable landing page UI shells live in `src/app/features/partner-landing/ui`
-- Global base styles prepared in `src/styles.scss`
+- Angular 22 standalone app
+- SCSS component styles
+- Prismic custom type and shared slices
+- Firebase Hosting
+- Vitest via Angular test runner
 
-## Development Server
+## Project Structure
 
-Run the app locally with:
+- `src/app/features/partner-landing` - landing page route, sections, and UI components
+- `src/app/core/prismic` - Prismic client, types, and field helpers
+- `customtypes/partner_landing_page` - Prismic page custom type
+- `slices/*` - Prismic shared slice models
+- `scripts/prismic` - content seeding scripts and source assets for Prismic
+- `public/assets` - static UI assets still bundled with the app
+
+## Commands
 
 ```bash
 npm start
+npm run build
+npm test -- --watch=false
 ```
 
-Then open `http://localhost:4200/`.
+Local app: `http://localhost:4200/`
 
-## Code Scaffolding
+## Prismic
 
-Generate new Angular building blocks with:
+Repository: `eddyson`
+
+Seed content with a Migration API write token:
 
 ```bash
-npm run ng -- generate component component-name
+PRISMIC_WRITE_TOKEN=... PRISMIC_PARTNER_LANDING_PAGE_ID=... npm run prismic:seed:page
 ```
 
-## Building
+## Firebase
 
-Create a production build with:
+Hosting project: `eddyson-15ff0`
 
 ```bash
 npm run build
+npx firebase-tools deploy --only hosting --project eddyson-15ff0
 ```
 
-## Tests
-
-Run unit tests with:
-
-```bash
-npm test
-```
+Live URL: `https://eddyson-15ff0.web.app`
