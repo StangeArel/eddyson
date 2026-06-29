@@ -10,27 +10,27 @@ const heroSectionSliceId =
 
 const heroAssetConfigs = {
   dotBackground: {
-    fileUrl: new URL('../../public/assets/hero/rectangle-4089.png', import.meta.url),
+    fileUrl: new URL('./assets/hero/rectangle-4089.png', import.meta.url),
     filename: 'rectangle-4089.png',
     alt: 'Dotted hero background',
   },
   gradientOverlay: {
-    fileUrl: new URL('../../public/assets/hero/rectangle-4090.svg', import.meta.url),
+    fileUrl: new URL('./assets/hero/rectangle-4090.svg', import.meta.url),
     filename: 'rectangle-4090.svg',
     alt: 'Hero gradient overlay',
   },
   requestPanelImage: {
-    fileUrl: new URL('../../public/assets/hero-ui/request-list-panel.png', import.meta.url),
+    fileUrl: new URL('./assets/hero-ui/request-list-panel.png', import.meta.url),
     filename: 'request-list-panel.png',
     alt: 'All requests panel',
   },
   metricCardImage: {
-    fileUrl: new URL('../../public/assets/hero-ui/projected-inventory-card.png', import.meta.url),
+    fileUrl: new URL('./assets/hero-ui/projected-inventory-card.png', import.meta.url),
     filename: 'projected-inventory-card.png',
     alt: 'Projected inventory card',
   },
   mediaCardImage: {
-    fileUrl: new URL('../../public/assets/hero-ui/video-thumbnail-card.png', import.meta.url),
+    fileUrl: new URL('./assets/hero-ui/video-thumbnail-card.png', import.meta.url),
     filename: 'video-thumbnail-card.png',
     alt: 'Partner video thumbnail',
   },
