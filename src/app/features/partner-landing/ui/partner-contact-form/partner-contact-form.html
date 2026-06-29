@@ -1,186 +1,141 @@
-<form
-  class="partner-contact-form"
-  [formGroup]="partnerForm"
-  aria-label="Partner contact form"
-  novalidate
-  (ngSubmit)="onSubmit()"
->
-  <label
-    class="partner-contact-form__field"
-    [class.partner-contact-form__field--invalid]="hasError('fullName')"
+@if (contentView(); as formContent) {
+  <form
+    class="partner-contact-form"
+    [formGroup]="partnerForm"
+    [attr.aria-label]="formAriaLabel()"
+    novalidate
+    (ngSubmit)="onSubmit()"
   >
-    <span class="partner-contact-form__label">
-      First and Last name
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <input
-      type="text"
-      name="full-name"
-      placeholder="Valery Jacobson jr III"
-      formControlName="fullName"
-      aria-required="true"
-      [attr.aria-invalid]="hasError('fullName')"
-    />
-  </label>
-
-  <label
-    class="partner-contact-form__field"
-    [class.partner-contact-form__field--invalid]="hasError('company')"
-  >
-    <span class="partner-contact-form__label">
-      Company
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <input
-      type="text"
-      name="company"
-      placeholder="Your company"
-      formControlName="company"
-      aria-required="true"
-      [attr.aria-invalid]="hasError('company')"
-    />
-  </label>
-
-  <label
-    class="partner-contact-form__field"
-    [class.partner-contact-form__field--invalid]="hasError('email')"
-  >
-    <span class="partner-contact-form__label">
-      Business email
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <input
-      type="email"
-      name="email"
-      placeholder="you@yourcompany.com"
-      formControlName="email"
-      aria-required="true"
-      [attr.aria-invalid]="hasError('email')"
-    />
-  </label>
-
-  <label
-    class="partner-contact-form__field partner-contact-form__field--phone"
-    [class.partner-contact-form__field--invalid]="hasError('phone')"
-  >
-    <span class="partner-contact-form__label">
-      Phone
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <span class="partner-contact-form__phone-control">
-      <select
-        class="partner-contact-form__country-select"
-        name="phone-country"
-        formControlName="phoneCountry"
-        [attr.aria-label]="
-          'Phone country, ' + selectedPhoneCountry().name + ' ' + selectedPhoneCountry().dialCode
-        "
-        (change)="onPhoneCountryChange()"
+    @for (field of fieldRows(); track field.controlName) {
+      <label
+        class="partner-contact-form__field"
+        [class.partner-contact-form__field--message]="field.type === 'textarea'"
+        [class.partner-contact-form__field--phone]="field.type === 'tel'"
+        [class.partner-contact-form__field--invalid]="hasError(field.controlName)"
       >
-        @for (country of phoneCountries; track country.iso) {
-          <option [value]="country.iso">{{ country.flag }}</option>
+        <span class="partner-contact-form__label">
+          {{ field.label }}
+          @if (field.required) {
+            <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
+            <span class="partner-contact-form__sr-only">{{ field.requiredLabel }}</span>
+          }
+        </span>
+
+        @switch (field.type) {
+          @case ('tel') {
+            <span class="partner-contact-form__phone-control">
+              <select
+                class="partner-contact-form__country-select"
+                name="phone-country"
+                formControlName="phoneCountry"
+                [attr.aria-label]="
+                  field.label +
+                  ', ' +
+                  selectedPhoneCountry().name +
+                  ' ' +
+                  selectedPhoneCountry().dialCode
+                "
+                (change)="onPhoneCountryChange()"
+              >
+                @for (country of phoneCountries; track country.iso) {
+                  <option [value]="country.iso">{{ country.flag }}</option>
+                }
+              </select>
+              <input
+                type="tel"
+                name="phone"
+                [placeholder]="phonePlaceholder()"
+                formControlName="phone"
+                [attr.aria-required]="field.required ? 'true' : null"
+                [attr.aria-invalid]="hasError(field.controlName)"
+                [attr.aria-describedby]="
+                  fieldErrorMessage(field) ? fieldErrorId(field.controlName) : null
+                "
+                (input)="onPhoneInput()"
+              />
+            </span>
+          }
+          @case ('select') {
+            <select
+              [name]="field.controlName"
+              [formControlName]="field.controlName"
+              [attr.aria-required]="field.required ? 'true' : null"
+              [attr.aria-invalid]="hasError(field.controlName)"
+              [attr.aria-describedby]="
+                fieldErrorMessage(field) ? fieldErrorId(field.controlName) : null
+              "
+            >
+              <option value="">{{ field.placeholder }}</option>
+              @for (option of field.options; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+          }
+          @case ('textarea') {
+            <textarea
+              #messageTextarea
+              [name]="field.controlName"
+              rows="2"
+              [placeholder]="field.placeholder"
+              [formControlName]="field.controlName"
+              [attr.aria-describedby]="
+                fieldErrorMessage(field) ? fieldErrorId(field.controlName) : null
+              "
+              (input)="resizeMessageTextarea($event)"
+            ></textarea>
+          }
+          @default {
+            <input
+              [type]="field.type"
+              [name]="field.controlName"
+              [placeholder]="field.placeholder"
+              [formControlName]="field.controlName"
+              [attr.aria-required]="field.required ? 'true' : null"
+              [attr.aria-invalid]="hasError(field.controlName)"
+              [attr.aria-describedby]="
+                fieldErrorMessage(field) ? fieldErrorId(field.controlName) : null
+              "
+            />
+          }
         }
-      </select>
+
+        @if (fieldErrorMessage(field); as errorMessage) {
+          <span
+            class="partner-contact-form__error"
+            [id]="fieldErrorId(field.controlName)"
+            aria-live="polite"
+          >
+            {{ errorMessage }}
+          </span>
+        }
+      </label>
+    }
+
+    <label
+      class="partner-contact-form__privacy"
+      [class.partner-contact-form__privacy--invalid]="hasError('privacy')"
+    >
       <input
-        type="tel"
-        name="phone"
-        [placeholder]="phonePlaceholder()"
-        formControlName="phone"
-        aria-required="true"
-        [attr.aria-invalid]="hasError('phone')"
-        (input)="onPhoneInput()"
+        type="checkbox"
+        name="privacy"
+        formControlName="privacy"
+        [attr.aria-invalid]="hasError('privacy')"
+        [attr.aria-describedby]="privacyErrorMessage() ? 'privacy-error' : null"
       />
-    </span>
-  </label>
+      @if (privacyUrl()) {
+        <a class="partner-contact-form__privacy-link" [href]="privacyUrl()">
+          {{ privacyText() }}
+        </a>
+      } @else {
+        <span>{{ privacyText() }}</span>
+      }
+      @if (privacyErrorMessage(); as privacyError) {
+        <span class="partner-contact-form__privacy-error" id="privacy-error" aria-live="polite">
+          {{ privacyError }}
+        </span>
+      }
+    </label>
 
-  <label
-    class="partner-contact-form__field"
-    [class.partner-contact-form__field--invalid]="hasError('partnerType')"
-  >
-    <span class="partner-contact-form__label">
-      Partner type
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <select
-      name="partner-type"
-      formControlName="partnerType"
-      aria-required="true"
-      [attr.aria-invalid]="hasError('partnerType')"
-    >
-      <option value="">Select at least one</option>
-      <option value="implementation-partner">Implementation Partner</option>
-      <option value="sales-partner">Sales Partner</option>
-      <option value="other">Other</option>
-    </select>
-  </label>
-
-  <label
-    class="partner-contact-form__field"
-    [class.partner-contact-form__field--invalid]="hasError('industry')"
-  >
-    <span class="partner-contact-form__label">
-      Industry
-      <span class="partner-contact-form__required-dot" aria-hidden="true"></span>
-      <span class="partner-contact-form__sr-only">required</span>
-    </span>
-    <select
-      name="industry"
-      formControlName="industry"
-      aria-required="true"
-      [attr.aria-invalid]="hasError('industry')"
-    >
-      <option value="">Select at least one</option>
-      <option value="automotive">Automotive</option>
-      <option value="grocery">Grocery</option>
-      <option value="logistics">Logistics</option>
-      <option value="retail">Retail</option>
-      <option value="production">Production</option>
-    </select>
-  </label>
-
-  <label class="partner-contact-form__field">
-    <span class="partner-contact-form__label">System focus</span>
-    <input
-      type="text"
-      name="system-focus"
-      placeholder="e.g. SAP, Microsoft"
-      formControlName="systemFocus"
-    />
-  </label>
-
-  <label class="partner-contact-form__field partner-contact-form__field--message">
-    <span class="partner-contact-form__label">Questions or comments</span>
-    <textarea
-      #messageTextarea
-      name="message"
-      rows="2"
-      placeholder="Anything you would like to add for optimal feedback"
-      formControlName="message"
-      (input)="resizeMessageTextarea($event)"
-    ></textarea>
-  </label>
-
-  <label
-    class="partner-contact-form__privacy"
-    [class.partner-contact-form__privacy--invalid]="hasError('privacy')"
-  >
-    <input
-      type="checkbox"
-      name="privacy"
-      formControlName="privacy"
-      [attr.aria-invalid]="hasError('privacy')"
-    />
-    <span>By submitting this form, I agree with the privacy policy</span>
-  </label>
-
-  <button class="partner-contact-form__submit" type="submit">Submit</button>
-
-  @if (submitMessage()) {
-    <p class="partner-contact-form__status" role="status">{{ submitMessage() }}</p>
-  }
-</form>
+    <button class="partner-contact-form__submit" type="submit">{{ submitLabel() }}</button>
+  </form>
+}

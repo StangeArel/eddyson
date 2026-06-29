@@ -1,5 +1,40 @@
-import { Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, computed, inject, input, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+export type PartnerContactControlName =
+  | 'fullName'
+  | 'company'
+  | 'email'
+  | 'phone'
+  | 'partnerType'
+  | 'industry'
+  | 'systemFocus'
+  | 'message';
+
+export type PartnerContactFieldType = 'text' | 'email' | 'tel' | 'select' | 'textarea';
+
+export type PartnerContactSelectOption = {
+  readonly label: string;
+  readonly value: string;
+};
+
+export type PartnerContactField = {
+  readonly controlName: PartnerContactControlName;
+  readonly label: string;
+  readonly placeholder: string;
+  readonly type: PartnerContactFieldType;
+  readonly required: boolean;
+  readonly requiredLabel: string;
+  readonly options: readonly PartnerContactSelectOption[];
+};
+
+export type PartnerContactFormContent = {
+  readonly ariaLabel: string;
+  readonly fields: readonly PartnerContactField[];
+  readonly privacyText: string;
+  readonly privacyUrl: string;
+  readonly submitLabel: string;
+};
 
 type PhoneCountry = {
   readonly iso: string;
@@ -69,10 +104,12 @@ const PHONE_COUNTRIES = [
 })
 export class PartnerContactForm {
   private readonly formBuilder = inject(FormBuilder);
+  private readonly hostElement = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly messageTextarea = viewChild<ElementRef<HTMLTextAreaElement>>('messageTextarea');
 
+  readonly content = input<PartnerContactFormContent | null>(null);
+
   protected readonly phoneCountries = PHONE_COUNTRIES;
-  protected readonly wasSubmitted = signal(false);
   protected readonly selectedPhoneCountry = signal<PhoneCountry>(PHONE_COUNTRIES[0]);
 
   protected readonly partnerForm = this.formBuilder.nonNullable.group({
@@ -88,8 +125,18 @@ export class PartnerContactForm {
     privacy: [false, Validators.requiredTrue],
   });
 
-  protected readonly submitMessage = computed(() =>
-    this.wasSubmitted() ? 'Thanks, your request is ready for partner management review.' : '',
+  protected readonly contentView = computed(() => this.content());
+
+  protected readonly fieldRows = computed(() => this.contentView()?.fields ?? []);
+
+  protected readonly privacyText = computed(() => this.contentView()?.privacyText ?? '');
+
+  protected readonly privacyUrl = computed(() => this.contentView()?.privacyUrl ?? '');
+
+  protected readonly submitLabel = computed(() => this.contentView()?.submitLabel ?? '');
+
+  protected readonly formAriaLabel = computed(() =>
+    this.contentView()?.ariaLabel ? `${this.contentView()?.ariaLabel} form` : null,
   );
 
   protected readonly phonePlaceholder = computed(() => this.selectedPhoneCountry().placeholder);
@@ -116,14 +163,12 @@ export class PartnerContactForm {
   }
 
   protected onSubmit(): void {
-    this.wasSubmitted.set(false);
-
     if (this.partnerForm.invalid) {
       this.partnerForm.markAllAsTouched();
+      queueMicrotask(() => this.focusFirstInvalidControl());
       return;
     }
 
-    this.wasSubmitted.set(true);
     this.selectedPhoneCountry.set(PHONE_COUNTRIES[0]);
     this.partnerForm.reset({
       fullName: '',
@@ -144,6 +189,36 @@ export class PartnerContactForm {
     const control = this.partnerForm.controls[controlName];
 
     return control.invalid && (control.touched || control.dirty);
+  }
+
+  protected fieldErrorId(controlName: PartnerContactControlName): string {
+    return `${controlName}-error`;
+  }
+
+  protected fieldErrorMessage(field: PartnerContactField): string {
+    const control = this.partnerForm.controls[field.controlName];
+
+    if (!this.hasError(field.controlName)) {
+      return '';
+    }
+
+    if (control.hasError('email')) {
+      return 'Please enter a valid business email address.';
+    }
+
+    if (field.type === 'select') {
+      return `Please select ${field.label.toLowerCase()}.`;
+    }
+
+    if (field.type === 'tel') {
+      return 'Please enter your phone number.';
+    }
+
+    return `Please fill in ${field.label.toLowerCase()}.`;
+  }
+
+  protected privacyErrorMessage(): string {
+    return this.hasError('privacy') ? 'Please accept the privacy policy to continue.' : '';
   }
 
   protected resizeMessageTextarea(event: Event): void {
@@ -167,6 +242,22 @@ export class PartnerContactForm {
     return [...this.phoneCountries]
       .sort((countryA, countryB) => countryB.dialCode.length - countryA.dialCode.length)
       .find((country) => normalizedValue.startsWith(country.dialCode));
+  }
+
+  private focusFirstInvalidControl(): void {
+    const firstInvalidControlName = Object.entries(this.partnerForm.controls).find(
+      ([, control]) => control.invalid,
+    )?.[0];
+
+    if (!firstInvalidControlName) {
+      return;
+    }
+
+    const invalidControl = this.hostElement.nativeElement.querySelector<HTMLElement>(
+      `[name="${firstInvalidControlName}"]`,
+    );
+
+    invalidControl?.focus();
   }
 
   private resetMessageTextareaHeight(): void {
