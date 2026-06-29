@@ -42,14 +42,7 @@
           "type": "Select",
           "config": {
             "label": "Style key",
-            "options": [
-              "grow",
-              "earn",
-              "technology",
-              "diverse",
-              "competitive",
-              "collaboration"
-            ]
+            "options": ["grow", "earn", "technology", "diverse", "competitive", "collaboration"]
           }
         }
       }

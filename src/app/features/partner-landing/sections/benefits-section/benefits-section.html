@@ -1,63 +1,37 @@
-<section class="benefits-section" aria-label="Partner benefits">
+<section
+  id="partner-benefits"
+  class="benefits-section"
+  [attr.aria-label]="content()?.ariaLabel || 'Benefits section loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
   <div class="benefits-section__grid">
-    <article class="benefit-card benefit-card--grow">
-      <img class="benefit-card__media" src="/assets/benefits/grow.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Grow together</h3>
-        <p class="benefit-card__text">
-          With ongoing activities, consulting, and support, we help scale your business and your
-          customers' growth.
-        </p>
-      </div>
-    </article>
-
-    <article class="benefit-card benefit-card--earn">
-      <img class="benefit-card__media" src="/assets/benefits/earn.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Earn as you go</h3>
-        <p class="benefit-card__text">
-          Benefit from our commission model while driving customer projects.
-        </p>
-      </div>
-    </article>
-
-    <article class="benefit-card benefit-card--technology">
-      <img class="benefit-card__media" src="/assets/benefits/technology.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Innovative technology</h3>
-        <p class="benefit-card__text">
-          Our business partner network replaces traditional, complex 1:1 mappings.
-        </p>
-      </div>
-    </article>
-
-    <article class="benefit-card benefit-card--diverse">
-      <img class="benefit-card__media" src="/assets/benefits/diverse.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Diverse partner program</h3>
-        <p class="benefit-card__text">
-          Benefit from a wide range of support, training, and joint activities.
-        </p>
-      </div>
-    </article>
-
-    <article class="benefit-card benefit-card--competitive">
-      <img class="benefit-card__media" src="/assets/benefits/competitive.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Competitive advantages</h3>
-        <p class="benefit-card__text">
-          Deliver scalable EDI solutions with reusable ERP connectors and generate revenue at the
-          same time.
-        </p>
-      </div>
-    </article>
-
-    <article class="benefit-card benefit-card--collaboration">
-      <img class="benefit-card__media" src="/assets/benefits/collaboration.avif" alt="" />
-      <div class="benefit-card__content">
-        <h3 class="benefit-card__title">Long-term collaboration</h3>
-        <p class="benefit-card__text">We build sustainable success together with you.</p>
-      </div>
-    </article>
+    @if (content(); as benefitsContent) {
+      @for (card of benefitsContent.cards; track card.title) {
+        <article [class]="'benefit-card benefit-card--' + card.styleKey">
+          <img class="benefit-card__media" [src]="card.image.src" [alt]="card.image.alt" />
+          <div class="benefit-card__content">
+            <h3 class="benefit-card__title">{{ card.title }}</h3>
+            <p class="benefit-card__text">{{ card.description }}</p>
+          </div>
+        </article>
+      }
+    } @else {
+      @for (card of [1, 2, 3, 4, 5, 6]; track card) {
+        <article class="benefit-card benefit-card--skeleton" aria-hidden="true">
+          <span
+            class="app-skeleton"
+            style="--skeleton-width: 48%; --skeleton-height: 28px; --skeleton-color: #ffffff47"
+          ></span>
+          <span
+            class="app-skeleton"
+            style="--skeleton-width: 92%; --skeleton-height: 22px; --skeleton-color: #ffffff2e"
+          ></span>
+          <span
+            class="app-skeleton"
+            style="--skeleton-width: 78%; --skeleton-height: 22px; --skeleton-color: #ffffff2e"
+          ></span>
+        </article>
+      }
+    }
   </div>
 </section>

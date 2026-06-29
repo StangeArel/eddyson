@@ -108,6 +108,21 @@
   z-index: 1;
 }
 
+.benefit-card--skeleton {
+  display: grid;
+  align-content: end;
+  gap: 14px;
+}
+
+.benefit-card--skeleton::after {
+  background: linear-gradient(180deg, var(--shadow-10) 0%, var(--overlay-black-80) 100%);
+}
+
+.benefit-card--skeleton .app-skeleton {
+  position: relative;
+  z-index: 1;
+}
+
 .benefit-card__title {
   margin: 0 0 16px;
   font-size: 24px;
