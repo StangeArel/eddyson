@@ -1,12 +1,21 @@
-<section class="expertise-section" aria-labelledby="expertise-title">
+<section
+  class="expertise-section"
+  [attr.aria-labelledby]="content() ? 'expertise-title' : null"
+  [attr.aria-label]="content() ? null : 'Expertise section loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
   <div class="expertise-section__copy">
-    <h2 id="expertise-title" class="expertise-section__title">
-      You Sell ERP and IT Solutions, We Provide EDI Expertise
-    </h2>
-    <p class="expertise-section__text">
-      Journey through the EDI Jungle: The perfect combination for holistic digital offerings. By
-      combining expertise from different fields, we meet and exceed your customers' needs. We
-      deliver scalable EDI solutions that create an effective IT landscape.
-    </p>
+    @if (content(); as expertiseContent) {
+      <h2 id="expertise-title" class="expertise-section__title">{{ expertiseContent.title }}</h2>
+      <p class="expertise-section__text">{{ expertiseContent.text }}</p>
+    } @else {
+      <span
+        class="app-skeleton expertise-section__title-skeleton"
+        style="--skeleton-height: 50px"
+      ></span>
+      <span class="app-skeleton" style="--skeleton-width: 100%; --skeleton-height: 40px"></span>
+      <span class="app-skeleton" style="--skeleton-width: 92%; --skeleton-height: 40px"></span>
+      <span class="app-skeleton" style="--skeleton-width: 72%; --skeleton-height: 40px"></span>
+    }
   </div>
 </section>

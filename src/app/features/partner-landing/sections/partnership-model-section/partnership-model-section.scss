@@ -38,6 +38,10 @@
   box-shadow: inset 0 -7px 0 var(--color-orange);
 }
 
+.partnership-model-section__title-skeleton {
+  justify-self: center;
+}
+
 @media (max-width: 74rem) {
   .partnership-model-section {
     padding-bottom: 72px;

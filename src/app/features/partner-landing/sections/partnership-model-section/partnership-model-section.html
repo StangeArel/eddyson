@@ -1,8 +1,25 @@
-<section class="partnership-model-section" aria-labelledby="partnership-model-title">
+<section
+  class="partnership-model-section"
+  [attr.aria-labelledby]="content() ? 'partnership-model-title' : null"
+  [attr.aria-label]="content() ? null : 'Partnership model section loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
   <span class="partnership-model-section__rule" aria-hidden="true"></span>
-  <h2 id="partnership-model-title" class="partnership-model-section__title">
-    Do you have a different partnership model in mind?
-    <a class="partnership-model-section__link" href="#partner-contact"><span class="partnership-model-section__link-label">Let's talk</span>.</a>
-  </h2>
+  @if (content(); as partnershipContent) {
+    <h2 id="partnership-model-title" class="partnership-model-section__title">
+      {{ partnershipContent.question }}
+      <a class="partnership-model-section__link" [attr.href]="partnershipContent.linkUrl || null">
+        <span class="partnership-model-section__link-label">
+          {{ partnershipContent.linkLabel }}
+        </span>
+        {{ partnershipContent.linkSuffix }}
+      </a>
+    </h2>
+  } @else {
+    <span
+      class="app-skeleton partnership-model-section__title-skeleton"
+      style="--skeleton-width: min(100%, 620px); --skeleton-height: 94px"
+    ></span>
+  }
   <span class="partnership-model-section__rule" aria-hidden="true"></span>
 </section>
