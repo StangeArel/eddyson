@@ -1,12 +1,43 @@
-<section id="partner-contact" class="contact-section" aria-label="Contact">
-  <div class="contact-section__content">
-    <h2 class="contact-section__title">Your First Step Toward Partnership with eddyson</h2>
-    <p class="contact-section__text">
-      Want to learn more about partnering with eddyson or become a partner straight away? Fill out
-      the form below to get in touch. The more details you provide, the better we can address your
-      needs. Our partner management team will reach out to you shortly.
-    </p>
-  </div>
+<section
+  id="partner-contact"
+  class="contact-section"
+  [attr.aria-labelledby]="content() ? 'contact-title' : null"
+  [attr.aria-label]="content() ? null : 'Contact section loading'"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
+  @if (content(); as contactContent) {
+    @if (contactContent.backgroundImage; as backgroundImage) {
+      <img
+        class="contact-section__background"
+        [src]="backgroundImage.src"
+        alt=""
+        aria-hidden="true"
+      />
+    }
 
-  <app-partner-contact-form />
+    <div class="contact-section__content">
+      <h2 id="contact-title" class="contact-section__title">{{ contactContent.title }}</h2>
+      <p class="contact-section__text">{{ contactContent.text }}</p>
+    </div>
+
+    <app-partner-contact-form [content]="contactContent.form" />
+  } @else {
+    <div class="contact-section__content">
+      <span
+        class="app-skeleton"
+        style="--skeleton-width: min(100%, 460px); --skeleton-height: 96px"
+      ></span>
+      <span class="app-skeleton" style="--skeleton-width: 100%; --skeleton-height: 40px"></span>
+      <span class="app-skeleton" style="--skeleton-width: 94%; --skeleton-height: 40px"></span>
+      <span class="app-skeleton" style="--skeleton-width: 82%; --skeleton-height: 40px"></span>
+    </div>
+
+    <div class="contact-section__form-skeleton" aria-hidden="true">
+      @for (field of [1, 2, 3, 4, 5, 6, 7, 8]; track field) {
+        <span class="app-skeleton" style="--skeleton-height: 48px"></span>
+      }
+      <span class="app-skeleton" style="--skeleton-width: 72%; --skeleton-height: 18px"></span>
+      <span class="app-skeleton" style="--skeleton-height: 57px"></span>
+    </div>
+  }
 </section>
