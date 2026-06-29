@@ -43,6 +43,14 @@
   flex: 0 0 auto;
 }
 
+.customer-logo-strip__logo-skeleton {
+  width: 148px;
+  height: 42px;
+  flex: 0 0 auto;
+  --skeleton-color: #77777738;
+  --skeleton-radius: 4px;
+}
+
 @keyframes logo-belt {
   from {
     transform: translate3d(0, -50%, 0);
@@ -78,5 +86,10 @@
   .customer-logo-strip__group img {
     transform: scale(0.7);
     transform-origin: center;
+  }
+
+  .customer-logo-strip__logo-skeleton {
+    width: 104px;
+    height: 30px;
   }
 }

@@ -1,31 +1,38 @@
-<section class="customer-logo-strip" aria-label="Customer logos">
-  <div class="customer-logo-strip__viewport" aria-hidden="true">
-    <div class="customer-logo-strip__track" aria-hidden="true">
-      <div class="customer-logo-strip__group">
-        <img src="/assets/customer-logos/bauhaus.svg" alt="" />
-        <img src="/assets/customer-logos/wagner.svg" alt="" />
-        <img src="/assets/customer-logos/lekkerland.svg" alt="" />
-        <img src="/assets/customer-logos/bbraun.svg" alt="" />
-        <img src="/assets/customer-logos/tdk.svg" alt="" />
-        <img src="/assets/customer-logos/nord.svg" alt="" />
-        <img src="/assets/customer-logos/jockey.svg" alt="" />
-        <img src="/assets/customer-logos/mitegro.svg" alt="" />
-        <img src="/assets/customer-logos/spax.svg" alt="" />
-        <img src="/assets/customer-logos/erich-jaeger.svg" alt="" />
-      </div>
+<section
+  class="customer-logo-strip"
+  [attr.aria-label]="content()?.ariaLabel || null"
+  [attr.aria-busy]="content() ? null : 'true'"
+>
+  @if (content(); as logoContent) {
+    <div class="customer-logo-strip__viewport" aria-hidden="true">
+      <div class="customer-logo-strip__track" aria-hidden="true">
+        <div class="customer-logo-strip__group">
+          @for (logo of logoContent.logos; track logo.name) {
+            <img [src]="logo.src" [alt]="logo.alt" />
+          }
+        </div>
 
-      <div class="customer-logo-strip__group">
-        <img src="/assets/customer-logos/bauhaus.svg" alt="" />
-        <img src="/assets/customer-logos/wagner.svg" alt="" />
-        <img src="/assets/customer-logos/lekkerland.svg" alt="" />
-        <img src="/assets/customer-logos/bbraun.svg" alt="" />
-        <img src="/assets/customer-logos/tdk.svg" alt="" />
-        <img src="/assets/customer-logos/nord.svg" alt="" />
-        <img src="/assets/customer-logos/jockey.svg" alt="" />
-        <img src="/assets/customer-logos/mitegro.svg" alt="" />
-        <img src="/assets/customer-logos/spax.svg" alt="" />
-        <img src="/assets/customer-logos/erich-jaeger.svg" alt="" />
+        <div class="customer-logo-strip__group">
+          @for (logo of logoContent.logos; track logo.name) {
+            <img [src]="logo.src" [alt]="logo.alt" />
+          }
+        </div>
       </div>
     </div>
-  </div>
+  } @else {
+    <div class="customer-logo-strip__viewport" aria-hidden="true">
+      <div class="customer-logo-strip__track">
+        <div class="customer-logo-strip__group">
+          @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track item) {
+            <span class="app-skeleton customer-logo-strip__logo-skeleton"></span>
+          }
+        </div>
+        <div class="customer-logo-strip__group">
+          @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track item) {
+            <span class="app-skeleton customer-logo-strip__logo-skeleton"></span>
+          }
+        </div>
+      </div>
+    </div>
+  }
 </section>
