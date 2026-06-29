@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prismic:seed:hero": "node scripts/prismic/seed-hero-section.mjs"
   },
   "private": true,
   "packageManager": "npm@11.12.1",

@@ -21,26 +21,26 @@
         "teaser_label": {
           "type": "Text",
           "config": {
-            "label": "Teaser side label"
+            "label": "Side label"
           }
         },
         "teaser_title": {
           "type": "Text",
           "config": {
-            "label": "Teaser title"
+            "label": "Topline"
           }
         },
         "teaser_text": {
           "type": "StructuredText",
           "config": {
-            "label": "Teaser text",
+            "label": "Copy",
             "multi": "paragraph"
           }
         },
         "secondary_button_label": {
           "type": "Text",
           "config": {
-            "label": "Secondary button label"
+            "label": "CTA secondary label"
           }
         },
         "secondary_button_link": {
@@ -52,7 +52,7 @@
         "primary_button_label": {
           "type": "Text",
           "config": {
-            "label": "Primary button label"
+            "label": "CTA primary label"
           }
         },
         "primary_button_link": {
